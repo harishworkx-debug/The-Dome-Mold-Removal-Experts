@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-white text-charcoal-800 font-sans;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    line-height: 1.2;
+  }
+  ::selection {
+    @apply bg-forest-600 text-white;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-6xl mx-auto px-5 sm:px-6 lg:px-8;
+  }
+  .container-wide {
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
+  }
+  .btn-call {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest-600 px-6 py-3.5 text-base font-semibold text-white shadow-card transition-all duration-300 hover:bg-forest-700 hover:shadow-cardHover hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-4 focus-visible:ring-forest-300;
+  }
+  .btn-call-lg {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-forest-600 px-8 py-4 text-lg font-semibold text-white shadow-lift transition-all duration-300 hover:bg-forest-700 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-4 focus-visible:ring-forest-300;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-forest-200 bg-white px-6 py-3.5 text-base font-semibold text-forest-700 transition-all duration-300 hover:border-forest-400 hover:bg-forest-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-forest-200;
+  }
+  .card-base {
+    @apply rounded-2xl bg-white shadow-card ring-1 ring-charcoal-100/60 transition-all duration-300 hover:shadow-cardHover;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-forest-600;
+  }
+  .prose-mold p {
+    @apply mb-5 text-charcoal-700 leading-relaxed;
+  }
+  .prose-mold h2 {
+    @apply mt-12 mb-4 text-2xl font-bold text-charcoal-900;
+  }
+  .prose-mold h3 {
+    @apply mt-8 mb-3 text-xl font-semibold text-charcoal-900;
+  }
+  .prose-mold ul {
+    @apply mb-5 space-y-2.5 text-charcoal-700;
+  }
+  .prose-mold li {
+    @apply flex gap-3 leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
