@@ -8,7 +8,7 @@ import {
   Droplets,
   HousePlus,
   ArrowDownToLine,
-  Home,
+  Home as HomeIcon,
   Wind,
   Building2,
   ArrowRight,
@@ -21,7 +21,7 @@ import {
 import Seo from '@/components/Seo';
 import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
-import { business, services, locations, homeImages } from '@/data/business';
+import { business, services, locations, homeImages, reviewsData } from '@/data/business';
 import { localBusinessJsonLd, breadcrumbJsonLd } from '@/lib/structuredData';
 
 const iconMap: Record<string, typeof Search> = {
@@ -32,7 +32,7 @@ const iconMap: Record<string, typeof Search> = {
   Droplets,
   HousePlus,
   ArrowDownToLine,
-  Home,
+  Home: HomeIcon,
   Wind,
   Building2,
 };
@@ -162,7 +162,7 @@ export default function Home() {
                       <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">{service.summary}</p>
                       <div className="mt-5 flex flex-col gap-2.5">
                         <Link
-                          to={`/services/${service.slug}`}
+                          to={`/${service.slug}-oakwood-oh`}
                           className="flex items-center justify-between rounded-lg bg-forest-50 px-4 py-3 text-sm font-semibold text-forest-700 transition-colors hover:bg-forest-100"
                         >
                           {service.name} Details
@@ -351,7 +351,7 @@ export default function Home() {
             </div>
             <div className="rounded-2xl bg-white p-6 shadow-card ring-1 ring-charcoal-100/60">
               <h3 className="flex items-center gap-2 font-display text-lg font-bold text-charcoal-900">
-                <Home className="h-5 w-5 text-forest-600" aria-hidden="true" />
+                <HomeIcon className="h-5 w-5 text-forest-600" aria-hidden="true" />
                 Where Mold Commonly Appears
               </h3>
               <ul className="mt-3 space-y-2 text-sm text-charcoal-600">
@@ -431,39 +431,68 @@ export default function Home() {
       <section className="bg-forest-50 py-16 lg:py-24">
         <div className="container-wide">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Reviews</span>
+            <span className="eyebrow">Customer Reviews</span>
             <h2 className="mt-3 font-display text-3xl font-bold text-charcoal-900 sm:text-4xl text-balance">
-              See What Customers Say on Google
+              Verified 5.0 Star Reviews on Google
             </h2>
             <p className="mt-4 text-lg text-charcoal-600">
-              Reviews for The Dome Mold Removal Experts are available on our Google Maps listing. We invite you to
-              read them there before you call.
+              Read real feedback from Oakwood and Dayton-area property owners who trust us with mold inspection, assessment, and removal.
             </p>
           </Reveal>
-          <Reveal delay={120} className="mt-10 flex justify-center">
+
+          {/* Real Reviews Cards */}
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {reviewsData.map((review, i) => {
+              const initials = review.author.split(' ').map((n) => n[0]).join('');
+              return (
+                <Reveal key={review.author} delay={i * 60}>
+                  <div className="flex h-full flex-col justify-between rounded-2xl bg-white p-6 shadow-card ring-1 ring-charcoal-100/60 transition-all hover:shadow-cardHover">
+                    <div>
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-forest-100 font-display text-sm font-bold text-forest-800">
+                          {initials}
+                        </div>
+                        <div>
+                          <p className="font-display text-sm font-bold text-charcoal-900">{review.author}</p>
+                          <p className="text-[0.7rem] text-charcoal-400">{review.timeAgo}</p>
+                        </div>
+                      </div>
+
+                      <div className="mt-3 flex items-center gap-1">
+                        {[...Array(review.rating)].map((_, idx) => (
+                          <Star key={idx} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" aria-hidden="true" />
+                        ))}
+                      </div>
+
+                      <p className="mt-3 text-xs leading-relaxed text-charcoal-600">
+                        "{review.text}"
+                      </p>
+                    </div>
+
+                    <div className="mt-4 border-t border-charcoal-100/60 pt-3 text-[0.7rem] font-medium text-forest-700">
+                      Verified Google Review
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Reveal delay={120} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={business.googleMapsListing}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-4 rounded-3xl bg-white px-10 py-8 shadow-card ring-1 ring-charcoal-100/60 transition-all hover:shadow-cardHover sm:flex-row sm:gap-8"
+              className="btn-call !bg-forest-800 !text-white hover:!bg-forest-900"
             >
-              <div className="flex items-center gap-1.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-7 w-7 fill-teal-400 text-teal-400" aria-hidden="true" />
-                ))}
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="font-display text-lg font-bold text-charcoal-900">Read Reviews on Google Maps</p>
-                <p className="mt-1 text-sm text-charcoal-500">Verified customer reviews on our Google listing</p>
-              </div>
-              <ChevronRight className="hidden h-6 w-6 text-forest-600 sm:block" aria-hidden="true" />
+              <Star className="h-4 w-4 fill-teal-400 text-teal-400" aria-hidden="true" />
+              View 5.0 Rating on Google Maps (6 reviews)
             </a>
+            <Link to="/reviews" className="btn-secondary">
+              Read All Customer Reviews
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </Reveal>
-          <p className="mt-6 text-center text-sm text-charcoal-500">
-            Visit our{' '}
-            <Link to="/reviews" className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600">Reviews page</Link>{' '}
-            for our review policy and a direct link to the listing.
-          </p>
         </div>
       </section>
 
@@ -483,7 +512,7 @@ export default function Home() {
             {locations.map((loc, i) => (
               <Reveal key={loc.slug} delay={i * 40}>
                 <Link
-                  to={`/service-areas/${loc.slug}`}
+                  to={`/mold-inspection-and-removal-${loc.slug}`}
                   className="group flex flex-col items-center justify-center rounded-2xl bg-forest-50 p-6 text-center ring-1 ring-forest-100 transition-all hover:bg-forest-100 hover:ring-forest-300"
                 >
                   <MapPin className="h-7 w-7 text-forest-600 transition-transform group-hover:scale-110" aria-hidden="true" />

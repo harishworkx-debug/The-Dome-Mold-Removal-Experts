@@ -113,13 +113,13 @@ function MobileMenu() {
                 <div className="ml-3 border-l border-charcoal-100 pl-3">
                   <Link to="/services" onClick={() => setOpen(false)} className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-forest-700 hover:bg-forest-50">All Services</Link>
                   {services.map((s) => (
-                    <Link key={s.slug} to={'/services/' + s.slug} onClick={() => setOpen(false)} className={subLinkClass}>{s.name}</Link>
+                    <Link key={s.slug} to={'/' + s.slug + '-oakwood-oh'} onClick={() => setOpen(false)} className={subLinkClass}>{s.name}</Link>
                   ))}
                 </div>
               )}
 
-              <Link to="/services/mold-inspection" onClick={() => setOpen(false)} className={linkClass}>Mold Inspection</Link>
-              <Link to="/services/mold-removal" onClick={() => setOpen(false)} className={linkClass}>Mold Removal</Link>
+              <Link to="/mold-inspection-oakwood-oh" onClick={() => setOpen(false)} className={linkClass}>Mold Inspection</Link>
+              <Link to="/mold-removal-oakwood-oh" onClick={() => setOpen(false)} className={linkClass}>Mold Removal</Link>
 
               <button onClick={() => setSection(section === 'areas' ? null : 'areas')} className={btnClass}>
                 <span>Service Areas</span>
@@ -129,7 +129,7 @@ function MobileMenu() {
                 <div className="ml-3 border-l border-charcoal-100 pl-3">
                   <Link to="/service-areas" onClick={() => setOpen(false)} className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-forest-700 hover:bg-forest-50">All Service Areas</Link>
                   {locations.map((l) => (
-                    <Link key={l.slug} to={'/service-areas/' + l.slug} onClick={() => setOpen(false)} className={subLinkClass}>{l.name}, {l.stateAbbr}</Link>
+                    <Link key={l.slug} to={'/mold-inspection-and-removal-' + l.slug} onClick={() => setOpen(false)} className={subLinkClass}>{l.name}, {l.stateAbbr}</Link>
                   ))}
                 </div>
               )}
@@ -153,8 +153,8 @@ function MobileMenu() {
 }
 
 export default function Header() {
-  const serviceItems = services.map((s) => ({ slug: s.slug, name: s.name, path: '/services/' + s.slug }));
-  const areaItems = locations.map((l) => ({ slug: l.slug, name: l.name + ', ' + l.stateAbbr, path: '/service-areas/' + l.slug }));
+  const serviceItems = services.map((s) => ({ slug: s.slug, name: s.name, path: '/' + s.slug + '-oakwood-oh' }));
+  const areaItems = locations.map((l) => ({ slug: l.slug, name: l.name + ', ' + l.stateAbbr, path: '/mold-inspection-and-removal-' + l.slug }));
 
   return (
     <>

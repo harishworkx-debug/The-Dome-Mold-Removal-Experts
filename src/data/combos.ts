@@ -15,7 +15,8 @@ export type ComboPage = {
 };
 
 // Verified service + location combinations.
-// Every service is offered across the verified Dayton metro service area.
+// Every service is offered across the verified Dayton metro service area, with Oakwood, OH as the primary location.
+// URLs are clean root-level slugs without /services/ (e.g. /mold-inspection-oakwood-oh).
 export const comboPages: ComboPage[] = services.flatMap((service) =>
   locations.map((location) => {
     const locShort = `${location.name}, ${location.stateAbbr}`;
@@ -36,8 +37,31 @@ export const comboPages: ComboPage[] = services.flatMap((service) =>
   }),
 );
 
-export function getComboPage(path: string): ComboPage | undefined {
-  return comboPages.find((p) => p.path === path);
+export function getComboPage(rawPath: string): ComboPage | undefined {
+  if (!rawPath) return undefined;
+  let path = rawPath.replace(/\/$/, '');
+  if (!path.startsWith('/')) path = '/' + path;
+
+  // Direct match:
+  const direct = comboPages.find((p) => p.path === path);
+  if (direct) return direct;
+
+  // If path starts with /services/, strip /services/
+  if (path.startsWith('/services/')) {
+    const withoutServices = path.replace(/^\/services/, '');
+    const found = comboPages.find((p) => p.path === withoutServices);
+    if (found) return found;
+    const withOh = `${withoutServices}-oh`;
+    const foundOh = comboPages.find((p) => p.path === withOh);
+    if (foundOh) return foundOh;
+  } else {
+    // If without -oh
+    const withOh = `${path}-oh`;
+    const foundOh = comboPages.find((p) => p.path === withOh);
+    if (foundOh) return foundOh;
+  }
+
+  return undefined;
 }
 
 export function combosForService(serviceSlug: string): ComboPage[] {

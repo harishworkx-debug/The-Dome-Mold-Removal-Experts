@@ -40,7 +40,7 @@ export default function ServiceAreasOverview() {
           {locations.map((loc, i) => (
             <Reveal key={loc.slug} delay={i * 50}>
               <Link
-                to={`/service-areas/${loc.slug}`}
+                to={`/mold-inspection-and-removal-${loc.slug}`}
                 className="card-base group flex h-full flex-col p-6"
               >
                 <div className="flex items-start justify-between">

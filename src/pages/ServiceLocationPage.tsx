@@ -1,21 +1,28 @@
-import { Link, useParams, Navigate } from 'react-router-dom';
+import { Link, useParams, useLocation, Navigate } from 'react-router-dom';
 import { Phone, ArrowRight, MapPin, CheckCircle2, AlertCircle, Search, ClipboardList, Sparkles, ShieldCheck, Droplets, HousePlus, ArrowDownToLine, Home, Wind, Building2 } from 'lucide-react';
 import Seo from '@/components/Seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Reveal from '@/components/Reveal';
 import PageCta, { ServiceLocationLinks } from '@/components/PageCta';
 import { business, services, locations } from '@/data/business';
-import { getComboPage, combosForService, combosForLocation } from '@/data/combos';
+import { ComboPage, getComboPage, combosForService, combosForLocation } from '@/data/combos';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/structuredData';
+import ServiceAreaDetail from './ServiceAreaDetail';
 
 const iconMap: Record<string, typeof Search> = {
   Search, ClipboardList, Sparkles, ShieldCheck, Droplets, HousePlus, ArrowDownToLine, Home, Wind, Building2,
 };
 
-export default function ServiceLocationPage() {
+export default function ServiceLocationPage({ comboOverride }: { comboOverride?: ComboPage } = {}) {
   const params = useParams();
-  const path = `/${params['*']}`;
-  const combo = getComboPage(path);
+  const locationHook = useLocation();
+  const currentPath = comboOverride ? comboOverride.path : (params['*'] ? `/${params['*']}` : locationHook.pathname);
+
+  if (currentPath.startsWith('/mold-inspection-and-removal-')) {
+    return <ServiceAreaDetail />;
+  }
+
+  const combo = comboOverride || getComboPage(currentPath);
   if (!combo) return <Navigate to="/404" replace />;
 
   const service = services.find((s) => s.slug === combo.serviceSlug)!;
@@ -23,11 +30,18 @@ export default function ServiceLocationPage() {
   const Icon = iconMap[service.icon] ?? Search;
   const locShort = `${location.name}, ${location.stateAbbr}`;
 
-  const crumbs = [
-    { name: 'Services', path: '/services' },
-    { name: service.name, path: `/services/${service.slug}` },
-    { name: locShort, path: combo.path },
-  ];
+  const isMainLocation = location.slug === 'oakwood-oh';
+
+  const crumbs = isMainLocation
+    ? [
+        { name: 'Services', path: '/services' },
+        { name: `${service.name} (${locShort})`, path: combo.path },
+      ]
+    : [
+        { name: 'Services', path: '/services' },
+        { name: service.name, path: `/${service.slug}-oakwood-oh` },
+        { name: locShort, path: combo.path },
+      ];
 
   // Location-aware FAQ
   const faqs = [
@@ -89,7 +103,7 @@ export default function ServiceLocationPage() {
               <Phone className="h-5 w-5" aria-hidden="true" />
               {service.ctaLabel}
             </a>
-            <Link to={`/service-areas/${location.slug}`} className="btn-secondary !border-forest-600 !bg-transparent !text-white hover:!bg-forest-800/60">
+            <Link to={`/mold-inspection-and-removal-${location.slug}`} className="btn-secondary !border-forest-600 !bg-transparent !text-white hover:!bg-forest-800/60">
               More {location.name} Services
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>

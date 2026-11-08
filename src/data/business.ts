@@ -22,8 +22,53 @@ export const business = {
   primaryCounty: 'Montgomery County',
   primaryRegion: 'Dayton',
   reviewCountExternal: 6,
+  ratingExternal: 5.0,
   reviewListingUrl: 'https://maps.app.goo.gl/73PAk7wk8AxiMjCFA',
 };
+
+export type CustomerReview = {
+  author: string;
+  rating: number;
+  timeAgo: string;
+  reviewCount: string;
+  serviceMentioned?: string;
+  text: string;
+};
+
+export const reviewsData: CustomerReview[] = [
+  {
+    author: 'Prasant Wilson',
+    rating: 5,
+    timeAgo: '5 months ago',
+    reviewCount: '2 reviews',
+    serviceMentioned: 'Mold Removal',
+    text: 'The flood damage clean up crew was outstanding. They removed standing water, sanitized affected areas, and checked for mold growth. Their mold removal services were thorough and effective. I highly recommended this company.',
+  },
+  {
+    author: 'Bonnie Ellis',
+    rating: 5,
+    timeAgo: '4 years ago',
+    reviewCount: '2 reviews',
+    serviceMentioned: 'Mold Remediation',
+    text: 'The company gave good support when we were suffering from a severe mold attack in our house. The black toxic mold could have damaged the house, but they came to the rescue with their effective mold remediation service.',
+  },
+  {
+    author: 'Neal Partsons',
+    rating: 5,
+    timeAgo: '4 years ago',
+    reviewCount: '2 reviews',
+    serviceMentioned: 'Mold Testing & Sampling',
+    text: "My strong recommendation goes to this company. They're very customer-friendly, their service policies are worth appreciating. I found cost-effective solutions from them for testing mold.",
+  },
+  {
+    author: 'Carlton Quinn',
+    rating: 5,
+    timeAgo: '4 years ago',
+    reviewCount: '4 reviews',
+    serviceMentioned: 'Mold Inspection',
+    text: "As they took responsibility, I didn't have to do anything except watch their work. They inspected everything attentively to decide on the proper way of preventing mold growth.",
+  },
+];
 
 export type ServiceLocation = {
   slug: string;

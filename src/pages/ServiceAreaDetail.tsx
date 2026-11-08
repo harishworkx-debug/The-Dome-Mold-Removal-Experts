@@ -1,10 +1,10 @@
-import { Link, useParams, Navigate } from 'react-router-dom';
+import { Link, useParams, useLocation, Navigate } from 'react-router-dom';
 import { Phone, ArrowRight, MapPin, CheckCircle2 } from 'lucide-react';
 import Seo from '@/components/Seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
-import { business, locations, services } from '@/data/business';
+import { business, locations } from '@/data/business';
 import { combosForLocation } from '@/data/combos';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/structuredData';
 
@@ -29,15 +29,37 @@ function locationFaqs(name: string, stateAbbr: string) {
   ];
 }
 
+const SERVICE_AREA_PREFIX = 'mold-inspection-and-removal-';
+
 export default function ServiceAreaDetail() {
-  const { locationSlug } = useParams();
-  const location = locations.find((l) => l.slug === locationSlug);
+  const params = useParams();
+  const locationHook = useLocation();
+
+  let rawSlug = params.locationSlug;
+  if (!rawSlug) {
+    const path = locationHook.pathname.replace(/^\//, '');
+    if (path.startsWith(SERVICE_AREA_PREFIX)) {
+      rawSlug = path;
+    }
+  }
+
+  const cleanSlug = rawSlug?.startsWith(SERVICE_AREA_PREFIX)
+    ? rawSlug.slice(SERVICE_AREA_PREFIX.length)
+    : rawSlug;
+
+  const location = locations.find((l) => l.slug === cleanSlug);
   if (!location) return <Navigate to="/404" replace />;
 
+  // If accessed with /service-areas/ prefix, redirect to clean URL without /service-areas/
+  if (locationHook.pathname.startsWith('/service-areas/')) {
+    return <Navigate to={`/${SERVICE_AREA_PREFIX}${location.slug}`} replace />;
+  }
+
   const combos = combosForLocation(location.slug);
+  const pagePath = `/${SERVICE_AREA_PREFIX}${location.slug}`;
   const crumbs = [
     { name: 'Service Areas', path: '/service-areas' },
-    { name: `${location.name}, ${location.stateAbbr}`, path: `/service-areas/${location.slug}` },
+    { name: `Mold Inspection & Removal in ${location.name}, ${location.stateAbbr}`, path: pagePath },
   ];
   const faqs = locationFaqs(location.name, location.stateAbbr);
 
@@ -46,7 +68,7 @@ export default function ServiceAreaDetail() {
       <Seo
         title={`Mold Inspection & Removal in ${location.name}, ${location.stateAbbr} | The Dome Mold Removal Experts`}
         description={`Mold inspection, assessment, removal, and moisture inspection services in ${location.name}, ${location.stateAbbr}. Call The Dome Mold Removal Experts at 937-967-3264.`}
-        path={`/service-areas/${location.slug}`}
+        path={pagePath}
         jsonLd={[breadcrumbJsonLd(crumbs), faqJsonLd(faqs)]}
       />
       <Breadcrumbs items={crumbs} />
@@ -103,22 +125,15 @@ export default function ServiceAreaDetail() {
             </Reveal>
 
             <Reveal delay={120}>
-              <h2>Mold Services Available in {location.name}</h2>
-              <p>
-                Each service below has a dedicated {location.name} page with service-specific and location-specific
-                information. Click any service to view its {location.name} page, or call to discuss which one fits
-                your situation.
-              </p>
-            </Reveal>
-
-            <Reveal delay={160}>
-              <h2>{location.name} Mold FAQs</h2>
+              <h2>Frequently Asked Questions for {location.name} Properties</h2>
               <div className="space-y-4">
                 {faqs.map((faq) => (
                   <details key={faq.q} className="group rounded-xl border border-charcoal-100 bg-white p-5 open:bg-forest-50/40">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-charcoal-900">
                       {faq.q}
-                      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-forest-100 text-forest-700 transition-transform group-open:rotate-45">+</span>
+                      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-forest-100 text-forest-700 transition-transform group-open:rotate-45">
+                        +
+                      </span>
                     </summary>
                     <p className="mt-3 text-charcoal-700 leading-relaxed">{faq.a}</p>
                   </details>
@@ -127,13 +142,13 @@ export default function ServiceAreaDetail() {
             </Reveal>
           </div>
 
+          {/* Sidebar */}
           <aside className="space-y-6">
             <Reveal delay={80}>
               <div className="rounded-2xl bg-forest-800 p-6 text-white shadow-card">
-                <h3 className="font-display text-lg font-bold">Call About Your {location.name} Property</h3>
+                <h3 className="font-display text-lg font-bold">Have Questions About a {location.name} Property?</h3>
                 <p className="mt-2 text-sm text-forest-200">
-                  A direct phone call is the only way to reach us. Tell us what you are seeing and where your property
-                  is located.
+                  Call our team directly to talk about what you are seeing and schedule an inspection or consultation.
                 </p>
                 <a href={business.phoneHref} className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-teal-400 px-5 py-3 font-semibold text-forest-950 transition-colors hover:bg-teal-300">
                   <Phone className="h-4 w-4" aria-hidden="true" />
@@ -148,7 +163,7 @@ export default function ServiceAreaDetail() {
                 <ul className="mt-4 space-y-2">
                   {locations.filter((l) => l.slug !== location.slug).map((l) => (
                     <li key={l.slug}>
-                      <Link to={`/service-areas/${l.slug}`} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
+                      <Link to={`/mold-inspection-and-removal-${l.slug}`} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
                         {l.name}, {l.stateAbbr}
                         <ArrowRight className="h-3.5 w-3.5 text-forest-500" aria-hidden="true" />
                       </Link>

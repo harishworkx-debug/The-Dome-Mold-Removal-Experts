@@ -1,4 +1,4 @@
-import { business, locations } from '@/data/business';
+import { business, locations, reviewsData } from '@/data/business';
 
 export const localBusinessJsonLd = {
   '@context': 'https://schema.org',
@@ -24,6 +24,23 @@ export const localBusinessJsonLd = {
   hasMap: business.googleMapsListing,
   sameAs: [business.googleMapsListing],
   areaServed: locations.map((l) => ({ '@type': 'City', name: `${l.name}, ${l.stateAbbr}` })),
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: '6',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: reviewsData.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.author },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: r.rating,
+      bestRating: '5',
+    },
+    reviewBody: r.text,
+  })),
 };
 
 export function serviceJsonLd(serviceName: string, locationName: string, path: string) {

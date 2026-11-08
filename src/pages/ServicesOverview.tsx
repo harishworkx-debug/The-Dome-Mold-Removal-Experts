@@ -62,7 +62,7 @@ export default function ServicesOverview() {
                     <p className="mt-4 text-charcoal-600 leading-relaxed">{service.summary}</p>
 
                     <div className="mt-5 flex flex-wrap gap-2.5">
-                      <Link to={`/services/${service.slug}`} className="btn-secondary !py-2.5 !text-sm">
+                      <Link to={`/${service.slug}-oakwood-oh`} className="btn-secondary !py-2.5 !text-sm">
                         {service.name} Details
                         <ArrowRight className="h-4 w-4" aria-hidden="true" />
                       </Link>

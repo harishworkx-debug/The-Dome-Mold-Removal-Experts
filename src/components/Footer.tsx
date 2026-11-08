@@ -61,7 +61,7 @@ export default function Footer() {
             <li><Link to="/services" className="text-forest-200 hover:text-white transition-colors">All Mold Services</Link></li>
             {services.map((s) => (
               <li key={s.slug}>
-                <Link to={`/services/${s.slug}`} className="text-forest-200 hover:text-white transition-colors">
+                <Link to={`/${s.slug}-oakwood-oh`} className="text-forest-200 hover:text-white transition-colors">
                   {s.name}
                 </Link>
               </li>
@@ -75,7 +75,7 @@ export default function Footer() {
             <li><Link to="/service-areas" className="text-forest-200 hover:text-white transition-colors">All Service Areas</Link></li>
             {locations.map((l) => (
               <li key={l.slug}>
-                <Link to={`/service-areas/${l.slug}`} className="text-forest-200 hover:text-white transition-colors">
+                <Link to={`/mold-inspection-and-removal-${l.slug}`} className="text-forest-200 hover:text-white transition-colors">
                   {l.name}, {l.stateAbbr}
                 </Link>
               </li>
