@@ -1,11 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Clock, ChevronDown, Search, ClipboardList, Sparkles, ShieldCheck, Droplets, HousePlus, ArrowDownToLine, Home, Wind, Building2, Menu, X } from 'lucide-react';
+import { Phone, Clock, ChevronDown, Menu, X } from 'lucide-react';
 import { business, services, locations } from '@/data/business';
-
-const iconMap: Record<string, typeof Search> = {
-  Search, ClipboardList, Sparkles, ShieldCheck, Droplets, HousePlus, ArrowDownToLine, Home, Wind, Building2,
-};
 
 type DropdownProps = {
   label: string;
@@ -113,13 +109,14 @@ function MobileMenu() {
                 <div className="ml-3 border-l border-charcoal-100 pl-3">
                   <Link to="/services" onClick={() => setOpen(false)} className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-forest-700 hover:bg-forest-50">All Services</Link>
                   {services.map((s) => (
-                    <Link key={s.slug} to={'/' + s.slug + '-oakwood-oh'} onClick={() => setOpen(false)} className={subLinkClass}>{s.name}</Link>
+                    <Link key={s.slug} to={s.corePath} onClick={() => setOpen(false)} className={subLinkClass}>{s.name}</Link>
                   ))}
                 </div>
               )}
 
-              <Link to="/mold-inspection-oakwood-oh" onClick={() => setOpen(false)} className={linkClass}>Mold Inspection</Link>
-              <Link to="/mold-removal-oakwood-oh" onClick={() => setOpen(false)} className={linkClass}>Mold Removal</Link>
+              <Link to="/mold-inspection" onClick={() => setOpen(false)} className={linkClass}>Mold Inspection</Link>
+              <Link to="/mold-testing" onClick={() => setOpen(false)} className={linkClass}>Mold Testing</Link>
+              <Link to="/mold-removal" onClick={() => setOpen(false)} className={linkClass}>Mold Removal</Link>
 
               <button onClick={() => setSection(section === 'areas' ? null : 'areas')} className={btnClass}>
                 <span>Service Areas</span>
@@ -129,11 +126,12 @@ function MobileMenu() {
                 <div className="ml-3 border-l border-charcoal-100 pl-3">
                   <Link to="/service-areas" onClick={() => setOpen(false)} className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-forest-700 hover:bg-forest-50">All Service Areas</Link>
                   {locations.map((l) => (
-                    <Link key={l.slug} to={'/mold-inspection-and-removal-' + l.slug} onClick={() => setOpen(false)} className={subLinkClass}>{l.name}, {l.stateAbbr}</Link>
+                    <Link key={l.slug} to={`/${l.slug}`} onClick={() => setOpen(false)} className={subLinkClass}>Mold Services in {l.name}, {l.stateAbbr}</Link>
                   ))}
                 </div>
               )}
 
+              <Link to="/guides" onClick={() => setOpen(false)} className={linkClass}>Guides &amp; FAQs</Link>
               <Link to="/about" onClick={() => setOpen(false)} className={linkClass}>About</Link>
               <Link to="/reviews" onClick={() => setOpen(false)} className={linkClass}>Reviews</Link>
               <Link to="/contact" onClick={() => setOpen(false)} className={linkClass}>Contact</Link>
@@ -153,8 +151,8 @@ function MobileMenu() {
 }
 
 export default function Header() {
-  const serviceItems = services.map((s) => ({ slug: s.slug, name: s.name, path: '/' + s.slug + '-oakwood-oh' }));
-  const areaItems = locations.map((l) => ({ slug: l.slug, name: l.name + ', ' + l.stateAbbr, path: '/mold-inspection-and-removal-' + l.slug }));
+  const serviceItems = services.map((s) => ({ slug: s.slug, name: s.name, path: s.corePath }));
+  const areaItems = locations.map((l) => ({ slug: l.slug, name: `Mold Services in ${l.name}, ${l.stateAbbr}`, path: `/${l.slug}` }));
 
   return (
     <>
@@ -163,7 +161,7 @@ export default function Header() {
         <div className="container-wide flex h-9 items-center justify-between text-xs">
           <span className="flex items-center gap-2">
             <Clock className="h-3.5 w-3.5 text-teal-300" aria-hidden="true" />
-            Open by appointment · Serving Oakwood, Dayton & the surrounding Miami Valley
+            Service-Area Referral Network · Serving {business.serviceAreaLabel}
           </span>
           <a
             href={business.googleMapsListing}
@@ -171,7 +169,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            2533 Far Hills Ave, Dayton, OH 45419
+            5.0 ★ Rated on Google (6 Reviews)
           </a>
         </div>
       </div>
@@ -180,7 +178,7 @@ export default function Header() {
       <header className="sticky top-0 z-40 border-b border-charcoal-100 bg-white/95 backdrop-blur-md">
         <div className="container-wide flex h-16 items-center justify-between gap-4 lg:h-20">
           <Link to="/" className="flex items-center gap-3 focus:outline-none focus-visible:ring-4 focus-visible:ring-forest-200 rounded-xl">
-            <img src="/favicon.svg" alt="" className="h-10 w-10 rounded-lg lg:h-12 lg:w-12" />
+            <img src="/favicon.svg" alt="" width={48} height={48} decoding="async" className="h-10 w-10 rounded-lg lg:h-12 lg:w-12" />
             <span className="flex flex-col leading-tight">
               <span className="font-display text-base font-extrabold text-forest-800 lg:text-lg">The Dome</span>
               <span className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-charcoal-500 lg:text-xs">
@@ -193,6 +191,7 @@ export default function Header() {
             <Link to="/" className="rounded-lg px-3 py-2 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">Home</Link>
             <Dropdown label="Services" overviewPath="/services" items={serviceItems} />
             <Dropdown label="Service Areas" overviewPath="/service-areas" items={areaItems} />
+            <Link to="/guides" className="rounded-lg px-3 py-2 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">Guides</Link>
             <Link to="/about" className="rounded-lg px-3 py-2 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">About</Link>
             <Link to="/reviews" className="rounded-lg px-3 py-2 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">Reviews</Link>
             <Link to="/contact" className="rounded-lg px-3 py-2 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">Contact</Link>

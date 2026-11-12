@@ -3,46 +3,33 @@ import {
   Phone,
   Search,
   ClipboardList,
-  Sparkles,
   ShieldCheck,
   Droplets,
   HousePlus,
   ArrowDownToLine,
   Home as HomeIcon,
   Wind,
-  Building2,
   ArrowRight,
   Star,
   MapPin,
   ShieldAlert,
   Eye,
-  ChevronRight,
+  BookOpen,
 } from 'lucide-react';
 import Seo from '@/components/Seo';
 import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
+import { ServiceIcon } from '@/components/ServiceIcon';
 import { business, services, locations, homeImages, reviewsData } from '@/data/business';
-import { localBusinessJsonLd, breadcrumbJsonLd } from '@/lib/structuredData';
-
-const iconMap: Record<string, typeof Search> = {
-  Search,
-  ClipboardList,
-  Sparkles,
-  ShieldCheck,
-  Droplets,
-  HousePlus,
-  ArrowDownToLine,
-  Home: HomeIcon,
-  Wind,
-  Building2,
-};
+import { guides } from '@/data/guides';
+import { organizationJsonLd, websiteJsonLd, localBusinessJsonLd } from '@/lib/structuredData';
 
 const concernSigns = [
   { icon: Eye, title: 'Visible discoloration', text: 'Staining or discoloration on walls, ceilings, trim, or grout can indicate moisture and potential mold growth worth a closer look.' },
   { icon: Wind, title: 'Musty odors', text: 'A persistent musty smell in a room, basement, or crawlspace is often the first sign of hidden moisture and mold activity.' },
   { icon: Droplets, title: 'Persistent moisture', text: 'Condensation on windows, pipes, or ductwork, and damp spots that never fully dry, create the conditions mold needs to grow.' },
   { icon: ShieldAlert, title: 'Past water intrusion', text: 'A previous leak, overflow, or storm event, even if it seemed to dry, may have left moisture behind in building materials.' },
-  { icon: ArrowDownToLine, title: 'Damp basements', text: 'Basements and crawlspaces below grade stay cool and humid, making them the most common areas for mold in Dayton-area homes.' },
+  { icon: ArrowDownToLine, title: 'Damp basements', text: 'Basements and crawlspaces below grade stay cool and humid, making them the most common areas for mold in Oakwood and Miami Valley homes.' },
   { icon: HousePlus, title: 'Moisture-related concerns', text: 'Any ongoing property condition that keeps materials wet or humid is a condition that can support mold and warrants a discussion.' },
 ];
 
@@ -50,37 +37,38 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Mold Inspection & Removal in Dayton, Ohio | The Dome Mold Removal Experts"
-        description="Professional mold inspection, assessment, and removal in Dayton, Oakwood, and the Miami Valley. Call The Dome Mold Removal Experts at 937-967-3264 to discuss your mold or moisture concerns."
+        title="Mold Inspection & Removal in Oakwood, OH | The Dome Mold Removal Experts"
+        description="Connect with local mold inspection and remediation professionals in Oakwood, OH. Get help assessing mold concerns, moisture problems and property damage. Request an estimate today."
         path="/"
-        jsonLd={[localBusinessJsonLd]}
+        jsonLd={[organizationJsonLd, websiteJsonLd, localBusinessJsonLd]}
       />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-forest-950">
         <div className="absolute inset-0">
-          <img src={homeImages.hero} alt={homeImages.heroAlt} className="h-full w-full object-cover opacity-30" loading="eager" />
+          <img src={homeImages.hero} alt={homeImages.heroAlt} width={1600} height={900} className="h-full w-full object-cover opacity-30" loading="eager" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-br from-forest-950 via-forest-900/85 to-forest-800/70" />
         </div>
         <div className="container-wide relative flex flex-col items-start gap-6 py-20 lg:py-28">
-          <Reveal>
+          <Reveal immediate>
             <span className="inline-flex items-center gap-2 rounded-full bg-forest-800/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-teal-300 ring-1 ring-teal-500/30">
               <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-              Oakwood & Dayton, Ohio
+              Oakwood, OH · Local Referral Network
             </span>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal immediate>
             <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl text-balance">
-              Professional Mold Inspection and Removal in Dayton, Ohio
+              Mold Inspection &amp; Removal in Oakwood, Ohio
             </h1>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal immediate>
             <p className="max-w-xl text-lg leading-relaxed text-forest-100">
-              Concerned about mold, moisture, or indoor property conditions? Call The Dome Mold Removal Experts to
-              discuss your concerns and available services.
+              Need reliable mold removal Oakwood OH homeowners trust? We are a local referral service connecting property
+              owners with independent mold inspection and remediation contractors in Oakwood. Call directly to request
+              an estimate today.
             </p>
           </Reveal>
-          <Reveal delay={240} className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Reveal immediate className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href={business.phoneHref} className="btn-call-lg bg-teal-400 !text-forest-950 hover:bg-teal-300">
               <Phone className="h-5 w-5" aria-hidden="true" />
               Call {business.phoneDisplay}
@@ -90,11 +78,11 @@ export default function Home() {
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Reveal>
-          <Reveal delay={320} className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-forest-200">
-            <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-teal-400" aria-hidden="true" /> Home Inspector</span>
-            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" /> {business.addressLine}, {business.addressCity}</span>
+          <Reveal immediate className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-forest-200">
+            <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-teal-400" aria-hidden="true" /> Home Inspector · Independent Contractor Network</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-teal-400" aria-hidden="true" /> Service-Area Business · Oakwood, OH</span>
             <a href={business.googleMapsListing} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
-              <Star className="h-4 w-4 fill-teal-400 text-teal-400" aria-hidden="true" /> See reviews on Google
+              <Star className="h-4 w-4 fill-teal-400 text-teal-400" aria-hidden="true" /> 5.0 Rated on Google (6 Reviews)
             </a>
           </Reveal>
         </div>
@@ -104,10 +92,10 @@ export default function Home() {
       <section className="border-b border-charcoal-100 bg-white">
         <div className="container-wide grid grid-cols-2 divide-x divide-charcoal-100 py-6 text-center lg:grid-cols-4">
           {[
-            { label: 'Business', value: 'Home Inspector' },
-            { label: 'Location', value: 'Oakwood / Dayton, OH' },
-            { label: 'Phone', value: business.phoneDisplay, href: business.phoneHref },
-            { label: 'Reviews', value: 'See on Google', href: business.googleMapsListing },
+            { label: 'Service Model', value: 'Independent Referral Network' },
+            { label: 'Primary Service Area', value: 'Oakwood, OH' },
+            { label: 'Call for Estimates', value: business.phoneDisplay, href: business.phoneHref },
+            { label: 'Customer Rating', value: '5.0 / 5 (6 Google Reviews)', href: business.googleMapsListing },
           ].map((item) => (
             <div key={item.label} className="px-4">
               <dt className="text-xs font-semibold uppercase tracking-wider text-charcoal-400">{item.label}</dt>
@@ -129,19 +117,60 @@ export default function Home() {
       <section className="py-16 lg:py-24">
         <div className="container-wide">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">What We Do</span>
+            <span className="eyebrow">Oakwood Mold Services</span>
             <h2 className="mt-3 font-display text-3xl font-bold text-charcoal-900 sm:text-4xl text-balance">
-              Mold and Moisture Services for Dayton-Area Properties
+              Mold Inspection, Testing &amp; Remediation in Oakwood, OH
             </h2>
             <p className="mt-4 text-lg text-charcoal-600">
-              From a single-room inspection to broader assessment and removal, we offer the mold-related services
-              property owners in the Miami Valley call us about most.
+              Explore dedicated core pages for visual inspections, accredited lab testing, basement checks, or contractor
+              remediation below. Serving neighboring cities? Visit{' '}
+              <Link
+                to="/dayton-oh"
+                className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600"
+              >
+                Mold Removal &amp; Inspection in Dayton, OH
+              </Link>{' '}
+              or view all{' '}
+              <Link
+                to="/service-areas"
+                className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600"
+              >
+                Miami Valley Service Areas
+              </Link>
+              .
             </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm">
+              {[
+                { label: 'Mold Inspection', to: '/mold-inspection' },
+                { label: 'Mold Testing', to: '/mold-testing' },
+                { label: 'Mold Removal', to: '/mold-removal' },
+                { label: 'Mold Remediation', to: '/mold-remediation' },
+                { label: 'Indoor Air Quality', to: '/indoor-air-quality' },
+                { label: 'Commercial Mold Inspection', to: '/commercial-mold-inspection' },
+                { label: 'Oakwood, OH', to: '/oakwood-oh' },
+                { label: 'Service Areas', to: '/service-areas' },
+              ].map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="rounded-full bg-forest-50 px-3.5 py-1.5 font-semibold text-forest-700 ring-1 ring-forest-200/80 transition-colors hover:bg-forest-100"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </Reveal>
 
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => {
-              const Icon = iconMap[service.icon] ?? Search;
+              const hasOakwoodCombo =
+                !service.comboLocationSlugs || service.comboLocationSlugs.includes('oakwood-oh');
+              const localLinkTo = hasOakwoodCombo
+                ? `/${service.slug}-oakwood-oh`
+                : `/${service.slug}-${service.comboLocationSlugs?.[0] ?? 'dayton-oh'}`;
+              const localLinkLabel = hasOakwoodCombo
+                ? `${service.shortName} in Oakwood, OH`
+                : `${service.shortName} in Dayton, OH`;
               return (
                 <Reveal key={service.slug} delay={i * 60}>
                   <article className="card-base group flex h-full flex-col overflow-hidden">
@@ -149,12 +178,15 @@ export default function Home() {
                       <img
                         src={service.image}
                         alt={service.imageAlt}
+                        width={940}
+                        height={650}
                         loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-forest-950/60 to-transparent" />
                       <div className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 shadow-card">
-                        <Icon className="h-5 w-5 text-forest-700" aria-hidden="true" />
+                        <ServiceIcon name={service.icon} className="h-5 w-5 text-forest-700" />
                       </div>
                     </div>
                     <div className="flex flex-1 flex-col p-6">
@@ -162,11 +194,17 @@ export default function Home() {
                       <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">{service.summary}</p>
                       <div className="mt-5 flex flex-col gap-2.5">
                         <Link
-                          to={`/${service.slug}-oakwood-oh`}
+                          to={service.corePath}
                           className="flex items-center justify-between rounded-lg bg-forest-50 px-4 py-3 text-sm font-semibold text-forest-700 transition-colors hover:bg-forest-100"
                         >
-                          {service.name} Details
+                          Explore {service.name}
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                        </Link>
+                        <Link
+                          to={localLinkTo}
+                          className="text-center text-xs font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600"
+                        >
+                          {localLinkLabel}
                         </Link>
                         <a href={business.phoneHref} className="flex items-center justify-center gap-2 rounded-lg border border-forest-200 px-4 py-3 text-sm font-semibold text-forest-700 transition-colors hover:bg-forest-50">
                           <Phone className="h-4 w-4" aria-hidden="true" />
@@ -219,7 +257,7 @@ export default function Home() {
         <div className="container-wide grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <Reveal>
             <div className="relative">
-              <img src={homeImages.inspector} alt={homeImages.inspectorAlt} loading="lazy" className="rounded-3xl object-cover shadow-lift" />
+              <img src={homeImages.inspector} alt={homeImages.inspectorAlt} width={1200} height={800} loading="lazy" decoding="async" className="rounded-3xl object-cover shadow-lift" />
               <div className="absolute -bottom-6 -right-4 hidden rounded-2xl bg-white p-5 shadow-cardHover ring-1 ring-charcoal-100 sm:block">
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-forest-600 text-white">
@@ -234,14 +272,16 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <span className="eyebrow">Why Call Us</span>
+            <span className="eyebrow">How Our Referral Service Works</span>
             <h2 className="mt-3 font-display text-3xl font-bold text-charcoal-900 sm:text-4xl text-balance">
-              Discuss Your Property Concerns With a Qualified Professional
+              Find a Mold Removal Company in Oakwood With Honest Guidance
             </h2>
             <p className="mt-4 text-lg text-charcoal-600">
-              The Dome Mold Removal Experts is a home inspector based in Oakwood, serving Dayton and the surrounding
-              area. We talk with homeowners, landlords, and property managers about mold, moisture, and indoor
-              conditions, and we explain what an inspection or removal process does and does not cover.
+              Looking for a dependable mold removal company Oakwood homeowners recommend starts with transparent
+              facts. The Dome Mold Removal Experts is a service-area referral service serving Oakwood, OH—connecting
+              homeowners, landlords, and buyers with independent local mold inspectors, testing specialists, and
+              remediation contractors. We do not claim to perform physical remediation ourselves; independent contractors
+              handle testing and remediation while walking you through scope and moisture control.
             </p>
             <ul className="mt-6 space-y-4">
               {[
@@ -284,10 +324,10 @@ export default function Home() {
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { num: '01', icon: Phone, title: 'Call Us', text: 'Pick up the phone and call 937-967-3264. Tell us what you are seeing and where your property is located.' },
-              { num: '02', icon: Search, title: 'We Inspect', text: 'We visit your property and perform a visual, room-by-room assessment of mold and moisture conditions.' },
-              { num: '03', icon: ClipboardList, title: 'Discuss Findings', text: 'We walk you through what we found, what it may mean, and what options are available to you.' },
-              { num: '04', icon: ShieldCheck, title: 'Next Steps', text: 'You decide what to act on and when. We answer your questions and help you understand the path forward.' },
+              { num: '01', icon: Phone, title: 'Call Us', text: 'Call 937-967-3264 and tell us what you see in your Oakwood property and which areas are affected.' },
+              { num: '02', icon: Search, title: 'Local Connection', text: 'We match you with independent local specialists for mold inspection Oakwood OH, testing, or estimates.' },
+              { num: '03', icon: ClipboardList, title: 'On-Site Review', text: 'An independent local inspector or contractor assesses moisture conditions and accessible mold growth.' },
+              { num: '04', icon: ShieldCheck, title: 'Estimate & Next Steps', text: 'Review clear options directly with the contractor—whether targeted testing or mold removal Oakwood OH.' },
             ].map((step, i) => {
               const Icon = step.icon;
               return (
@@ -401,11 +441,11 @@ export default function Home() {
           </Reveal>
           <div className="mx-auto mt-10 max-w-3xl space-y-4">
             {[
-              { q: 'What does a mold inspection include?', a: 'A visual, room-by-room walkthrough of accessible areas of your property to identify visible mold growth, moisture sources, and the building conditions that support mold. It includes an on-site discussion of what we find.' },
-              { q: 'Can you tell me what type of mold it is from a visual inspection?', a: 'No. A visual inspection alone cannot identify mold species or determine whether mold is toxigenic. Identifying specific species requires sampling and laboratory analysis, which is a separate process.' },
-              { q: 'What is the difference between mold removal and mold remediation?', a: 'Mold removal is the physical removal of visible mold from affected surfaces. Mold remediation is a broader process that includes removal along with containment, cleaning, and addressing the conditions that caused the mold.' },
-              { q: 'How do I schedule an inspection?', a: 'Call 937-967-3264. We do not use online forms, email, chat, or booking systems. A direct phone call is the only way to reach us.' },
-              { q: 'Do you serve my area?', a: 'We serve Oakwood, Dayton, Kettering, Centerville, Beavercreek, Miamisburg, Washington Township, Moraine, Riverside, and Fairborn. Call to confirm we cover your specific location.' },
+              { q: 'Does The Dome perform physical mold remediation directly?', a: 'No. The Dome Mold Removal Experts operates as a referral service connecting homeowners and property owners in Oakwood, OH and nearby areas with independent local mold inspectors, testing professionals, and remediation contractors.' },
+              { q: 'Can you tell me what type of mold it is from a visual inspection?', a: 'No. A visual inspection alone cannot identify mold species or determine whether mold is toxigenic. Identifying specific species requires separate mold testing and laboratory analysis through an independent testing specialist.' },
+              { q: 'What is the difference between mold removal and mold remediation?', a: 'Mold removal focuses on physically removing visible mold from affected surfaces. Mold remediation is a broader contractor process including containment, air filtration, material removal, cleaning, and correcting moisture sources.' },
+              { q: 'How do I schedule mold inspection or removal in Oakwood, OH?', a: 'Call 937-967-3264. We connect you directly by phone with independent local specialists—no automated booking queues or waiting on email forms.' },
+              { q: 'Do you serve Oakwood and Dayton as well as nearby cities?', a: 'Yes. Oakwood, OH is our primary focus on this homepage, and our referral network also covers Dayton, Kettering, Centerville, Beavercreek, Miamisburg, Washington Township, Moraine, Riverside, and Fairborn. Explore our dedicated Dayton location page or call to confirm coverage.' },
             ].map((faq, i) => (
               <Reveal key={faq.q} delay={i * 40}>
                 <details className="group rounded-xl border border-charcoal-100 bg-white p-5 shadow-card open:bg-forest-50/40">
@@ -436,7 +476,7 @@ export default function Home() {
               Verified 5.0 Star Reviews on Google
             </h2>
             <p className="mt-4 text-lg text-charcoal-600">
-              Read real feedback from Oakwood and Dayton-area property owners who trust us with mold inspection, assessment, and removal.
+              Read authentic Google customer reviews from Oakwood and Miami Valley property owners who called our network.
             </p>
           </Reveal>
 
@@ -512,12 +552,16 @@ export default function Home() {
             {locations.map((loc, i) => (
               <Reveal key={loc.slug} delay={i * 40}>
                 <Link
-                  to={`/mold-inspection-and-removal-${loc.slug}`}
+                  to={`/${loc.slug}`}
                   className="group flex flex-col items-center justify-center rounded-2xl bg-forest-50 p-6 text-center ring-1 ring-forest-100 transition-all hover:bg-forest-100 hover:ring-forest-300"
                 >
                   <MapPin className="h-7 w-7 text-forest-600 transition-transform group-hover:scale-110" aria-hidden="true" />
-                  <span className="mt-3 font-display text-base font-bold text-charcoal-900">{loc.name}</span>
-                  <span className="text-xs text-charcoal-500">{loc.stateAbbr}</span>
+                  <span className="mt-3 text-[0.7rem] font-semibold uppercase tracking-wider text-forest-600">
+                    Mold Inspection &amp; Removal in
+                  </span>
+                  <span className="mt-1 font-display text-base font-bold text-charcoal-900">
+                    {loc.name}, {loc.stateAbbr}
+                  </span>
                 </Link>
               </Reveal>
             ))}
@@ -525,6 +569,55 @@ export default function Home() {
           <Reveal delay={200} className="mt-8 text-center">
             <Link to="/service-areas" className="btn-secondary">
               View All Service Areas
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Mold & moisture guides */}
+      <section className="bg-charcoal-50 py-16 lg:py-24">
+        <div className="container-wide">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow">Homeowner Research Articles</span>
+            <h2 className="mt-3 font-display text-3xl font-bold text-charcoal-900 sm:text-4xl text-balance">
+              Ohio Basement, Attic, Crawl Space &amp; Inspection Articles
+            </h2>
+            <p className="mt-4 text-lg text-charcoal-600">
+              In-depth articles written for Oakwood and Dayton-area homeowners investigating moisture causes, testing differences, and post-water-damage mold signs.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {guides
+              .filter((g) => g.featured)
+              .map((guide, i) => (
+                <Reveal key={guide.slug} delay={i * 50}>
+                  <Link
+                    to={`/${guide.slug}`}
+                    className="card-base group flex h-full flex-col p-6"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-forest-50 text-forest-700">
+                        <BookOpen className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <span className="text-xs font-semibold text-charcoal-400">{guide.readingTime}</span>
+                    </div>
+                    <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-forest-600">{guide.eyebrow}</p>
+                    <h3 className="mt-1 font-display text-lg font-bold text-charcoal-900 group-hover:text-forest-700">
+                      {guide.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-600">{guide.summary}</p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-forest-700">
+                      Read {guide.title}
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+          </div>
+          <Reveal delay={180} className="mt-8 text-center">
+            <Link to="/guides" className="btn-secondary">
+              Browse All {guides.length} Mold Articles &amp; Guides
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Reveal>

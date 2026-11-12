@@ -1,18 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 
-const services = [
+const coreServices = [
+  '/mold-inspection',
+  '/mold-testing',
+  '/mold-removal',
+  '/mold-remediation',
+  '/moisture-inspection',
+  '/basement-mold-inspection',
+  '/attic-mold-inspection',
+  '/indoor-air-quality',
+  '/commercial-mold-inspection',
+];
+
+const comboServices = [
   'mold-inspection',
-  'mold-assessment',
+  'mold-testing',
   'mold-removal',
   'mold-remediation',
   'moisture-inspection',
-  'water-intrusion-inspection',
   'basement-mold-inspection',
   'attic-mold-inspection',
   'indoor-air-quality-inspection',
-  'property-mold-inspection',
 ];
+
+const commercialComboLocations = ['dayton-oh', 'moraine-oh'];
 
 const locations = [
   'oakwood-oh',
@@ -27,36 +39,78 @@ const locations = [
   'fairborn-oh',
 ];
 
+const guideSlugs = [
+  '/guides',
+  '/causes-of-mold-growth-ohio-basements',
+  '/signs-your-attic-has-mold-or-moisture-problem',
+  '/what-happens-during-professional-mold-inspection',
+  '/recognize-mold-after-water-damage',
+  '/mold-testing-vs-mold-inspection-difference',
+  '/prevent-recurring-moisture-problems-crawl-spaces',
+  '/mold-prevention-guide',
+  '/basement-moisture-guide',
+  '/mold-inspection-faqs',
+  '/water-damage-and-mold-guide',
+];
+
 const base = 'https://www.moldremoval-oakwood.com';
-const today = new Date().toISOString().split('T')[0];
+// Update these dates only when meaningful content edits happen on those route groups.
+const CONTENT_UPDATED = {
+  topLevel: '2026-11-12',
+  guides: '2026-11-12',
+  coreServices: '2026-11-12',
+  locations: '2026-11-12',
+  combos: '2026-11-12',
+};
 
 const urls = [];
 
-// 1. Core Pages
-urls.push({ loc: `${base}/`, changefreq: 'daily', priority: '1.0' });
-urls.push({ loc: `${base}/services`, changefreq: 'weekly', priority: '0.9' });
-urls.push({ loc: `${base}/service-areas`, changefreq: 'weekly', priority: '0.9' });
-urls.push({ loc: `${base}/about`, changefreq: 'monthly', priority: '0.8' });
-urls.push({ loc: `${base}/reviews`, changefreq: 'weekly', priority: '0.8' });
-urls.push({ loc: `${base}/contact`, changefreq: 'monthly', priority: '0.8' });
+// 1. Canonical Indexable Top-Level Pages (excludes 404/noindex or redirected URLs)
+urls.push({ loc: `${base}/`, lastmod: CONTENT_UPDATED.topLevel });
+urls.push({ loc: `${base}/services`, lastmod: CONTENT_UPDATED.topLevel });
+urls.push({ loc: `${base}/service-areas`, lastmod: CONTENT_UPDATED.topLevel });
+urls.push({ loc: `${base}/about`, lastmod: CONTENT_UPDATED.topLevel });
+urls.push({ loc: `${base}/reviews`, lastmod: CONTENT_UPDATED.topLevel });
+urls.push({ loc: `${base}/contact`, lastmod: CONTENT_UPDATED.topLevel });
 
-// 2. Service Area Detail Pages (Service Name + Location Name without /service-areas/)
-locations.forEach((loc) => {
+// 2. Supporting Content Guides & FAQs
+guideSlugs.forEach((guidePath) => {
   urls.push({
-    loc: `${base}/mold-inspection-and-removal-${loc}`,
-    changefreq: 'weekly',
-    priority: '0.85',
+    loc: `${base}${guidePath}`,
+    lastmod: CONTENT_UPDATED.guides,
   });
 });
 
-// 3. Service-Location Combo Pages (All 10 services x 10 locations = 100 pages without /services/)
-services.forEach((service) => {
+// 3. Canonical Core Service Pages
+coreServices.forEach((servicePath) => {
+  urls.push({
+    loc: `${base}${servicePath}`,
+    lastmod: CONTENT_UPDATED.coreServices,
+  });
+});
+
+// 4. Shortened Canonical Location Pages (/{city}-oh)
+locations.forEach((loc) => {
+  urls.push({
+    loc: `${base}/${loc}`,
+    lastmod: CONTENT_UPDATED.locations,
+  });
+});
+
+// 5. Active Service-Location Pages (8 residential x 10 locations + 2 targeted commercial locations = 82 pages)
+comboServices.forEach((service) => {
   locations.forEach((loc) => {
     urls.push({
       loc: `${base}/${service}-${loc}`,
-      changefreq: loc === 'oakwood-oh' ? 'weekly' : 'monthly',
-      priority: loc === 'oakwood-oh' ? '0.9' : '0.75',
+      lastmod: CONTENT_UPDATED.combos,
     });
+  });
+});
+
+commercialComboLocations.forEach((loc) => {
+  urls.push({
+    loc: `${base}/commercial-mold-inspection-${loc}`,
+    lastmod: CONTENT_UPDATED.combos,
   });
 });
 
@@ -66,9 +120,7 @@ ${urls
   .map(
     (u) => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${u.changefreq}</changefreq>
-    <priority>${u.priority}</priority>
+    <lastmod>${u.lastmod}</lastmod>
   </url>`
   )
   .join('\n')}
@@ -78,10 +130,3 @@ ${urls
 const outputPath = path.resolve(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(outputPath, xml, 'utf8');
 console.log(`Successfully generated sitemap.xml with ${urls.length} pages at ${outputPath}`);
-
-const distPath = path.resolve(__dirname, '../dist/sitemap.xml');
-if (fs.existsSync(path.resolve(__dirname, '../dist'))) {
-  fs.writeFileSync(distPath, xml, 'utf8');
-  console.log(`Also copied sitemap.xml to ${distPath}`);
-}
-

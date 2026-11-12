@@ -1,46 +1,35 @@
-import { business, locations, reviewsData } from '@/data/business';
+import { business, locations } from '@/data/business';
+
+export const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${business.website}#organization`,
+  name: business.name,
+  url: business.website,
+  telephone: business.phoneDisplay,
+  sameAs: [business.googleMapsListing],
+};
+
+export const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${business.website}#website`,
+  name: business.name,
+  url: business.website,
+  publisher: { '@id': `${business.website}#organization` },
+};
 
 export const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': `${business.website}#business`,
   name: business.name,
-  description: business.tagline,
+  description:
+    'Service-area referral service connecting Oakwood, OH and Miami Valley property owners with independent local mold inspectors, testing professionals, and remediation contractors.',
   url: business.website,
   telephone: business.phoneDisplay,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: business.addressLine,
-    addressLocality: business.addressCity,
-    addressRegion: business.addressState,
-    postalCode: business.addressZip,
-    addressCountry: 'US',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: business.geoLat,
-    longitude: business.geoLng,
-  },
-  hasMap: business.googleMapsListing,
   sameAs: [business.googleMapsListing],
   areaServed: locations.map((l) => ({ '@type': 'City', name: `${l.name}, ${l.stateAbbr}` })),
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '6',
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: reviewsData.map((r) => ({
-    '@type': 'Review',
-    author: { '@type': 'Person', name: r.author },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: r.rating,
-      bestRating: '5',
-    },
-    reviewBody: r.text,
-  })),
 };
 
 export function serviceJsonLd(serviceName: string, locationName: string, path: string) {
@@ -48,6 +37,7 @@ export function serviceJsonLd(serviceName: string, locationName: string, path: s
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `${serviceName} in ${locationName}, OH`,
+    description: `Referral service connecting ${locationName}, OH property owners with independent local ${serviceName.toLowerCase()} specialists.`,
     provider: { '@id': `${business.website}#business` },
     areaServed: { '@type': 'City', name: `${locationName}, OH` },
     url: `${business.website}${path}`,
@@ -76,5 +66,25 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       name: item.name,
       item: `${business.website}${item.path}`,
     })),
+  };
+}
+
+export function articleJsonLd(article: {
+  title: string;
+  description: string;
+  path: string;
+  publishedAt: string;
+  updatedAt: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    mainEntityOfPage: `${business.website}${article.path}`,
+    author: { '@id': `${business.website}#organization` },
+    publisher: { '@id': `${business.website}#organization` },
   };
 }

@@ -1,20 +1,27 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { services } from '@/data/business';
-import { getComboPage } from '@/data/combos';
+import { getComboPage, resolveLegacyRedirect } from '@/data/combos';
 
 export default function ServiceDetail() {
   const { serviceSlug } = useParams();
 
-  // 1. If this matches a combo (e.g. mold-inspection-oakwood-oh), redirect directly to clean root URL (e.g. /mold-inspection-oakwood-oh)
-  const combo = serviceSlug ? getComboPage(`/${serviceSlug}`) || getComboPage(`/services/${serviceSlug}`) : undefined;
-  if (combo) {
-    return <Navigate to={combo.path} replace />;
+  if (!serviceSlug) return <Navigate to="/404" replace />;
+
+  const redirectTarget = resolveLegacyRedirect(`/services/${serviceSlug}`);
+  if (redirectTarget) {
+    return <Navigate to={redirectTarget} replace />;
   }
 
-  // 2. If this is a base service slug (e.g. mold-inspection), redirect to the main location clean URL without /services/
-  const service = services.find((s) => s.slug === serviceSlug);
-  if (service) {
-    return <Navigate to={`/${service.slug}-oakwood-oh`} replace />;
+  // Matches an active core service slug -> redirect cleanly to its canonical core path
+  const coreService = services.find((s) => s.slug === serviceSlug || s.corePath === `/${serviceSlug}`);
+  if (coreService) {
+    return <Navigate to={coreService.corePath} replace />;
+  }
+
+  // Matches a remaining active combo slug -> redirect cleanly to /{service}-{city}-oh
+  const combo = getComboPage(`/${serviceSlug}`);
+  if (combo) {
+    return <Navigate to={combo.path} replace />;
   }
 
   return <Navigate to="/404" replace />;

@@ -40,7 +40,7 @@ export default function Reviews() {
       {/* Header */}
       <section className="py-12 lg:py-16">
         <div className="container-page">
-          <Reveal className="max-w-3xl">
+          <Reveal immediate className="max-w-3xl">
             <span className="eyebrow">Customer Reviews</span>
             <h1 className="mt-3 font-display text-4xl font-extrabold text-charcoal-900 sm:text-5xl text-balance">
               Verified 5.0 Star Reviews
@@ -72,7 +72,7 @@ export default function Reviews() {
                     The Dome Mold Removal Experts
                   </h2>
                   <p className="mt-1 text-sm text-forest-200">
-                    Home inspector & mold specialist serving Oakwood, Dayton & surrounding communities
+                    Home inspector &amp; mold contractor referral network serving Oakwood, OH &amp; the Miami Valley
                   </p>
                 </div>
               </div>

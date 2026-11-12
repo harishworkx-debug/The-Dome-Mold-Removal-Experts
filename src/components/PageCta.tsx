@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Phone, ArrowRight, MapPin } from 'lucide-react';
-import { business } from '@/data/business';
-import { locations } from '@/data/business';
+import { business, services } from '@/data/business';
+import { combosForService } from '@/data/combos';
 
 export default function PageCta({
   headline = 'Concerned About Mold in Your Property?',
-  subtext = 'Call The Dome Mold Removal Experts to discuss your inspection or mold-related concerns.',
+  subtext = 'Call The Dome Mold Removal Experts to connect with local mold inspection and remediation professionals.',
 }: {
   headline?: string;
   subtext?: string;
@@ -25,23 +25,34 @@ export default function PageCta({
   );
 }
 
-export function ServiceLocationLinks({ serviceSlug, currentLocationSlug }: { serviceSlug: string; currentLocationSlug?: string }) {
-  const others = locations.filter((l) => l.slug !== currentLocationSlug);
+export function ServiceLocationLinks({
+  serviceSlug,
+  serviceName,
+  currentLocationSlug,
+}: {
+  serviceSlug: string;
+  serviceName?: string;
+  currentLocationSlug?: string;
+}) {
+  const resolvedServiceName =
+    serviceName ?? services.find((s) => s.slug === serviceSlug)?.shortName ?? 'Mold Service';
+  const others = combosForService(serviceSlug).filter((c) => c.locationSlug !== currentLocationSlug);
+  if (others.length === 0) return null;
   return (
     <div className="rounded-2xl bg-forest-50 p-6 ring-1 ring-forest-100">
       <h3 className="flex items-center gap-2 font-display text-lg font-bold text-forest-800">
         <MapPin className="h-5 w-5 text-forest-600" aria-hidden="true" />
-        This Service in Other Areas
+        {resolvedServiceName} in Other Service Areas
       </h3>
       <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-        {others.map((l) => (
-          <li key={l.slug}>
+        {others.map((c) => (
+          <li key={c.path}>
             <Link
-              to={`/${serviceSlug}-${l.slug}`}
+              to={c.path}
               className="flex items-center justify-between rounded-lg bg-white px-3.5 py-2.5 text-sm font-medium text-charcoal-700 ring-1 ring-charcoal-100 transition-all hover:text-forest-700 hover:ring-forest-300"
             >
-              {l.name}, {l.stateAbbr}
-              <ArrowRight className="h-3.5 w-3.5 text-forest-500" aria-hidden="true" />
+              <span>{resolvedServiceName} in {c.locationName}, {c.locationState}</span>
+              <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 text-forest-500" aria-hidden="true" />
             </Link>
           </li>
         ))}

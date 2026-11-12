@@ -1,15 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Home from '@/pages/Home';
-import ServicesOverview from '@/pages/ServicesOverview';
-import ServiceDetail from '@/pages/ServiceDetail';
-import ServiceAreasOverview from '@/pages/ServiceAreasOverview';
-import ServiceAreaDetail from '@/pages/ServiceAreaDetail';
-import ServiceLocationPage from '@/pages/ServiceLocationPage';
-import About from '@/pages/About';
-import Reviews from '@/pages/Reviews';
-import Contact from '@/pages/Contact';
 import NotFound from '@/pages/NotFound';
+import { services, locations } from '@/data/business';
+import { guides } from '@/data/guides';
+
+const ServicesOverview = lazy(() => import('@/pages/ServicesOverview'));
+const ServiceDetail = lazy(() => import('@/pages/ServiceDetail'));
+const CoreServicePage = lazy(() => import('@/pages/CoreServicePage'));
+const ServiceAreasOverview = lazy(() => import('@/pages/ServiceAreasOverview'));
+const ServiceAreaDetail = lazy(() => import('@/pages/ServiceAreaDetail'));
+const ServiceLocationPage = lazy(() => import('@/pages/ServiceLocationPage'));
+const GuidesOverview = lazy(() => import('@/pages/GuidesOverview'));
+const GuideDetail = lazy(() => import('@/pages/GuideDetail'));
+const About = lazy(() => import('@/pages/About'));
+const Reviews = lazy(() => import('@/pages/Reviews'));
+const Contact = lazy(() => import('@/pages/Contact'));
 
 export default function App() {
   return (
@@ -21,11 +28,38 @@ export default function App() {
           <Route path="/services/:serviceSlug" element={<ServiceDetail />} />
           <Route path="/service-areas" element={<ServiceAreasOverview />} />
           <Route path="/service-areas/:locationSlug" element={<ServiceAreaDetail />} />
+          <Route path="/guides" element={<GuidesOverview />} />
+          {guides.map((guide) => (
+            <Route
+              key={guide.slug}
+              path={`/${guide.slug}`}
+              element={<GuideDetail guideSlug={guide.slug} />}
+            />
+          ))}
+          {services.map((service) => (
+            <Route
+              key={service.corePath}
+              path={service.corePath}
+              element={<CoreServicePage serviceSlug={service.slug} />}
+            />
+          ))}
+          {locations.map((loc) => (
+            <Route
+              key={loc.slug}
+              path={`/${loc.slug}`}
+              element={<ServiceAreaDetail locationSlugOverride={loc.slug} />}
+            />
+          ))}
+          {/* Consolidated overlapping service base paths -> core canonical services */}
+          <Route path="/mold-assessment" element={<Navigate to="/mold-inspection" replace />} />
+          <Route path="/property-mold-inspection" element={<Navigate to="/mold-inspection" replace />} />
+          <Route path="/water-intrusion-inspection" element={<Navigate to="/moisture-inspection" replace />} />
+          <Route path="/indoor-air-quality-inspection" element={<Navigate to="/indoor-air-quality" replace />} />
           <Route path="/about" element={<About />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/404" element={<NotFound />} />
-          {/* Service-location combo pages: /{service-slug}-{location-slug} */}
+          {/* Service-location combos & legacy redirect fallbacks */}
           <Route path="/*" element={<ServiceLocationPage />} />
         </Route>
       </Routes>

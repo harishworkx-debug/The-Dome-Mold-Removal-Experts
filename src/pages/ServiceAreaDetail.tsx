@@ -1,41 +1,26 @@
 import { Link, useParams, useLocation, Navigate } from 'react-router-dom';
-import { Phone, ArrowRight, MapPin, CheckCircle2 } from 'lucide-react';
+import { Phone, ArrowRight, MapPin, CheckCircle2, BookOpen, ShieldQuestion, Building2 } from 'lucide-react';
 import Seo from '@/components/Seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
-import { business, locations } from '@/data/business';
+import { business, locations, services } from '@/data/business';
 import { combosForLocation } from '@/data/combos';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/structuredData';
 
-function locationFaqs(name: string, stateAbbr: string) {
-  return [
-    {
-      q: `Does The Dome Mold Removal Experts serve ${name}, ${stateAbbr}?`,
-      a: `Yes. ${name}, ${stateAbbr} is part of our verified service area in the Miami Valley. Call ${business.phoneDisplay} to discuss your property.`,
-    },
-    {
-      q: `What mold services are available in ${name}?`,
-      a: `The mold inspection, assessment, removal, remediation, moisture inspection, water intrusion inspection, and basement mold inspection services listed on this page are available in ${name}. Each has its own dedicated ${name} page linked below.`,
-    },
-    {
-      q: `Can you identify the type of mold in my ${name} property?`,
-      a: `A visual inspection alone cannot identify mold species or determine toxicity. Sampling and laboratory analysis are separate from a visual inspection. Call to ask whether sampling is available for your situation.`,
-    },
-    {
-      q: `How do I schedule a mold inspection in ${name}?`,
-      a: `Call ${business.phoneDisplay}. We do not use online forms, booking systems, or email, a direct phone call is the only way to reach us.`,
-    },
-  ];
-}
-
 const SERVICE_AREA_PREFIX = 'mold-inspection-and-removal-';
 
-export default function ServiceAreaDetail() {
+const SHARED_CONTRACTOR_QUESTIONS = [
+  'Will a clear written scope be provided before any tear-out, containment, or treatment work begins?',
+  'Is visual moisture tracing or independent lab testing separated from physical remediation contracting?',
+  'Which underlying plumbing, roofing, or exterior drainage repairs should happen outside the cleanup scope so mold does not return?',
+];
+
+export default function ServiceAreaDetail({ locationSlugOverride }: { locationSlugOverride?: string } = {}) {
   const params = useParams();
   const locationHook = useLocation();
 
-  let rawSlug = params.locationSlug;
+  let rawSlug = locationSlugOverride || params.locationSlug;
   if (!rawSlug) {
     const path = locationHook.pathname.replace(/^\//, '');
     if (path.startsWith(SERVICE_AREA_PREFIX)) {
@@ -50,24 +35,43 @@ export default function ServiceAreaDetail() {
   const location = locations.find((l) => l.slug === cleanSlug);
   if (!location) return <Navigate to="/404" replace />;
 
-  // If accessed with /service-areas/ prefix, redirect to clean URL without /service-areas/
-  if (locationHook.pathname.startsWith('/service-areas/')) {
-    return <Navigate to={`/${SERVICE_AREA_PREFIX}${location.slug}`} replace />;
+  const pagePath = `/${location.slug}`;
+
+  // Redirect legacy /service-areas/* and /mold-inspection-and-removal-* URLs to clean /{city}-oh URL
+  if (
+    locationHook.pathname.startsWith('/service-areas/') ||
+    locationHook.pathname.startsWith(`/${SERVICE_AREA_PREFIX}`)
+  ) {
+    return <Navigate to={pagePath} replace />;
   }
 
   const combos = combosForLocation(location.slug);
-  const pagePath = `/${SERVICE_AREA_PREFIX}${location.slug}`;
+  const hasCommercial = combos.some((c) => c.serviceSlug === 'commercial-mold-inspection');
+  const seoTitle =
+    location.seoTitle ??
+    `Mold Inspection & Removal in ${location.name}, ${location.stateAbbr} | The Dome Mold Removal Experts`;
+  const seoDescription =
+    location.metaDescription ??
+    `Connect with independent mold inspection, testing, removal, and remediation professionals in ${location.name}, ${location.stateAbbr}. Call The Dome Mold Removal Experts at 937-967-3264.`;
+  const pageHeading =
+    location.h1 ?? `Mold Inspection & Removal in ${location.name}, ${location.stateAbbr}`;
+
   const crumbs = [
     { name: 'Service Areas', path: '/service-areas' },
-    { name: `Mold Inspection & Removal in ${location.name}, ${location.stateAbbr}`, path: pagePath },
+    { name: pageHeading, path: pagePath },
   ];
-  const faqs = locationFaqs(location.name, location.stateAbbr);
+  const { locationOverview } = location;
+  const faqs = locationOverview.faqs;
+  const allContractorQuestions = [
+    ...SHARED_CONTRACTOR_QUESTIONS,
+    ...locationOverview.localContractorQuestions,
+  ];
 
   return (
     <>
       <Seo
-        title={`Mold Inspection & Removal in ${location.name}, ${location.stateAbbr} | The Dome Mold Removal Experts`}
-        description={`Mold inspection, assessment, removal, and moisture inspection services in ${location.name}, ${location.stateAbbr}. Call The Dome Mold Removal Experts at 937-967-3264.`}
+        title={seoTitle}
+        description={seoDescription}
         path={pagePath}
         jsonLd={[breadcrumbJsonLd(crumbs), faqJsonLd(faqs)]}
       />
@@ -86,14 +90,18 @@ export default function ServiceAreaDetail() {
             </span>
           </div>
           <h1 className="mt-6 max-w-3xl font-display text-4xl font-extrabold text-white sm:text-5xl text-balance">
-            Mold Inspection and Removal in {location.name}, {location.stateAbbr}
+            {pageHeading}
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-forest-100">{location.blurb}</p>
-          <div className="mt-7">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <a href={business.phoneHref} className="btn-call-lg bg-teal-400 !text-forest-950 hover:bg-teal-300">
               <Phone className="h-5 w-5" aria-hidden="true" />
               Call {business.phoneDisplay}
             </a>
+            <Link to="/contact" className="btn-secondary !border-forest-600 !bg-transparent !text-white hover:!bg-forest-800/60">
+              Contact Us for {location.name} Services
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
@@ -102,18 +110,118 @@ export default function ServiceAreaDetail() {
         <div className="container-page grid grid-cols-1 gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2 prose-mold">
             <Reveal>
-              <h2>Serving {location.name} Homeowners and Property Owners</h2>
+              <h2>Mold Referral Network Serving {location.name}, {location.stateAbbr}</h2>
               <p>
-                {location.name} is part of the verified service area for The Dome Mold Removal Experts. We are based
-                in Oakwood and serve {location.name} and the surrounding {location.county} communities. We talk with
-                homeowners, landlords, and commercial property managers about mold, moisture, and indoor conditions,
-                and we explain what an inspection or removal does and does not cover for your property.
+                {location.name}, {location.stateAbbr} is part of the service area for The Dome Mold Removal Experts. We
+                operate as a service-area referral network connecting {location.name} homeowners, landlords, and
+                property managers with independent local contractors for mold inspection, mold testing, mold removal,
+                and mold remediation across {location.county}. The Dome connects callers with qualified independent
+                specialists rather than directly performing physical remediation work.
               </p>
             </Reveal>
 
+            <Reveal delay={60}>
+              <div className="not-prose my-8 rounded-2xl bg-forest-50 p-6 ring-1 ring-forest-100">
+                <h2 className="font-display text-xl font-bold text-charcoal-900">
+                  Popular Mold Services in {location.name}, {location.stateAbbr}
+                </h2>
+                <p className="mt-2 text-sm text-charcoal-600">
+                  Go directly to the local service page you need in {location.name} or explore our core service overviews:
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {[
+                    { label: `Mold Inspection in ${location.name}`, to: `/mold-inspection-${location.slug}` },
+                    { label: `Mold Testing in ${location.name}`, to: `/mold-testing-${location.slug}` },
+                    { label: `Mold Removal in ${location.name}`, to: `/mold-removal-${location.slug}` },
+                    { label: `Mold Remediation in ${location.name}`, to: `/mold-remediation-${location.slug}` },
+                    { label: `Basement Mold Inspection in ${location.name}`, to: `/basement-mold-inspection-${location.slug}` },
+                    ...(hasCommercial
+                      ? [{ label: `Commercial Mold Inspection in ${location.name}`, to: `/commercial-mold-inspection-${location.slug}` }]
+                      : []),
+                    { label: 'Contact The Dome', to: '/contact' },
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-2 text-xs font-semibold text-forest-700 ring-1 ring-forest-200 transition-colors hover:bg-forest-100"
+                    >
+                      {item.label}
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-5 border-t border-forest-200/70 pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-forest-800">
+                    Core Service Overviews &amp; Moisture Guides
+                  </p>
+                  <div className="mt-2.5 flex flex-wrap gap-2">
+                    {services.slice(0, 6).map((s) => (
+                      <Link
+                        key={s.corePath}
+                        to={s.corePath}
+                        className="rounded-full bg-white px-3 py-1 text-xs font-medium text-charcoal-700 ring-1 ring-charcoal-200 transition-colors hover:bg-forest-100 hover:text-forest-800"
+                      >
+                        {s.name} Guide
+                      </Link>
+                    ))}
+                    <Link
+                      to="/causes-of-mold-growth-ohio-basements"
+                      className="inline-flex items-center gap-1 rounded-full bg-forest-800 px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-forest-700"
+                    >
+                      <BookOpen className="h-3 w-3" aria-hidden="true" />
+                      Ohio Basement Mold Causes
+                    </Link>
+                    <Link
+                      to="/what-happens-during-professional-mold-inspection"
+                      className="inline-flex items-center gap-1 rounded-full bg-forest-800 px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-forest-700"
+                    >
+                      <BookOpen className="h-3 w-3" aria-hidden="true" />
+                      Mold Inspection Process
+                    </Link>
+                    <Link
+                      to="/basement-moisture-guide"
+                      className="inline-flex items-center gap-1 rounded-full bg-forest-800 px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-forest-700"
+                    >
+                      <BookOpen className="h-3 w-3" aria-hidden="true" />
+                      Basement Moisture Guide
+                    </Link>
+                    <Link
+                      to="/mold-prevention-guide"
+                      className="inline-flex items-center gap-1 rounded-full bg-forest-800 px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-forest-700"
+                    >
+                      <BookOpen className="h-3 w-3" aria-hidden="true" />
+                      Mold Prevention Guide
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
             <Reveal delay={80}>
-              <h2>Local Property Concerns in {location.name}</h2>
-              <p>Properties in {location.name} share some common conditions that prompt calls about mold and moisture:</p>
+              <h2>Local Property Conditions in {location.name}</h2>
+              <div className="not-prose my-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-charcoal-100 bg-white p-4 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-forest-700">Housing Stock &amp; Construction</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-charcoal-700">{location.housingEra}</p>
+                </div>
+                <div className="rounded-xl border border-charcoal-100 bg-white p-4 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-forest-700">Soil, Drainage &amp; Moisture</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-charcoal-700">{location.soilAndDrainage}</p>
+                </div>
+              </div>
+
+              <h3>Mold Concerns in {location.name} Residential Properties</h3>
+              <p>{locationOverview.residentialConcernsBody}</p>
+
+              <h3>Basement Moisture and Water Intrusion</h3>
+              <p>{locationOverview.basementAndWaterBody}</p>
+
+              <h3>Mold Concerns Following Plumbing and Roof Leaks</h3>
+              <p>{locationOverview.plumbingAndRoofBody}</p>
+
+              <p className="rounded-xl bg-sand-50 p-4 text-sm text-charcoal-700 ring-1 ring-sand-200">
+                <strong>What local calls focus on in {location.name}:</strong> {location.localFocusNote}
+              </p>
               <ul>
                 {location.concerns.map((c) => (
                   <li key={c}>
@@ -122,6 +230,56 @@ export default function ServiceAreaDetail() {
                   </li>
                 ))}
               </ul>
+            </Reveal>
+
+            <Reveal delay={100}>
+              <div className="not-prose my-8 rounded-2xl border border-forest-100 bg-white p-6 shadow-card">
+                <h2 className="flex items-center gap-2 font-display text-xl font-bold text-charcoal-900">
+                  <Building2 className="h-5 w-5 text-forest-700" aria-hidden="true" />
+                  Residential and Commercial Property Assistance
+                </h2>
+                <p className="mt-2.5 text-sm leading-relaxed text-charcoal-700">
+                  {locationOverview.propertyTypesBody}
+                </p>
+                {hasCommercial && (
+                  <Link
+                    to={`/commercial-mold-inspection-${location.slug}`}
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600"
+                  >
+                    Explore Commercial Mold Inspection in {location.name}, {location.stateAbbr}
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                )}
+
+                <h3 className="mt-6 font-display text-lg font-bold text-charcoal-900">
+                  How to Arrange an Inspection in {location.name}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
+                  {locationOverview.arrangeNote}
+                </p>
+                <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-sm text-charcoal-700">
+                  <li>Call {business.phoneDisplay} directly by phone—no web form queues or walk-in office visits needed.</li>
+                  <li>Share what you are noticing (musty odors, basement dampness, staining, or past water intrusion) and your {location.name} property type.</li>
+                  <li>Connect with an independent local inspector or remediation contractor serving {location.county} to schedule an on-site estimate.</li>
+                </ol>
+              </div>
+            </Reveal>
+
+            <Reveal delay={110}>
+              <div className="not-prose my-8 rounded-2xl border border-sand-200 bg-sand-50/70 p-6">
+                <h2 className="flex items-center gap-2 font-display text-xl font-bold text-charcoal-900">
+                  <ShieldQuestion className="h-5 w-5 text-forest-700" aria-hidden="true" />
+                  What {location.name} Homeowners Should Ask Before Hiring a Contractor
+                </h2>
+                <ul className="mt-3 space-y-2.5 text-sm text-charcoal-700">
+                  {allContractorQuestions.map((question) => (
+                    <li key={question} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-forest-600" aria-hidden="true" />
+                      <span>{question}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </Reveal>
 
             <Reveal delay={120}>
@@ -146,14 +304,19 @@ export default function ServiceAreaDetail() {
           <aside className="space-y-6">
             <Reveal delay={80}>
               <div className="rounded-2xl bg-forest-800 p-6 text-white shadow-card">
-                <h3 className="font-display text-lg font-bold">Have Questions About a {location.name} Property?</h3>
+                <h3 className="font-display text-lg font-bold">Need Mold Services in {location.name}?</h3>
                 <p className="mt-2 text-sm text-forest-200">
-                  Call our team directly to talk about what you are seeing and schedule an inspection or consultation.
+                  Call our referral line directly to connect with independent local mold inspectors and remediation
+                  contractors serving {location.name}.
                 </p>
                 <a href={business.phoneHref} className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-teal-400 px-5 py-3 font-semibold text-forest-950 transition-colors hover:bg-teal-300">
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   Call {business.phoneDisplay}
                 </a>
+                <Link to="/contact" className="mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-forest-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-forest-700">
+                  Contact Page &amp; Service Area Info
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </Link>
               </div>
             </Reveal>
 
@@ -163,9 +326,9 @@ export default function ServiceAreaDetail() {
                 <ul className="mt-4 space-y-2">
                   {locations.filter((l) => l.slug !== location.slug).map((l) => (
                     <li key={l.slug}>
-                      <Link to={`/mold-inspection-and-removal-${l.slug}`} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
-                        {l.name}, {l.stateAbbr}
-                        <ArrowRight className="h-3.5 w-3.5 text-forest-500" aria-hidden="true" />
+                      <Link to={`/${l.slug}`} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
+                        <span>Mold Inspection &amp; Removal in {l.name}, {l.stateAbbr}</span>
+                        <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 text-forest-500" aria-hidden="true" />
                       </Link>
                     </li>
                   ))}

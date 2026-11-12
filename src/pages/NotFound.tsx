@@ -10,6 +10,7 @@ export default function NotFound() {
         title="Page Not Found | The Dome Mold Removal Experts"
         description="The page you are looking for could not be found. Call The Dome Mold Removal Experts at 937-967-3264 or return to the homepage."
         path="/404"
+        noindex
       />
       <section className="flex min-h-[70vh] items-center bg-forest-50 py-16">
         <div className="container-page text-center">

@@ -1,4 +1,98 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/services/mold-assessment",
+      "destination": "/mold-inspection",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/mold-assessment-(.*)",
+      "destination": "/mold-inspection-$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/property-mold-inspection",
+      "destination": "/mold-inspection",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/property-mold-inspection-(.*)",
+      "destination": "/mold-inspection-$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/water-intrusion-inspection",
+      "destination": "/moisture-inspection",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/water-intrusion-inspection-(.*)",
+      "destination": "/moisture-inspection-$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/indoor-air-quality-inspection",
+      "destination": "/indoor-air-quality",
+      "statusCode": 301
+    },
+    {
+      "source": "/mold-assessment",
+      "destination": "/mold-inspection",
+      "statusCode": 301
+    },
+    {
+      "source": "/mold-assessment-(.*)",
+      "destination": "/mold-inspection-$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/property-mold-inspection",
+      "destination": "/mold-inspection",
+      "statusCode": 301
+    },
+    {
+      "source": "/property-mold-inspection-(.*)",
+      "destination": "/mold-inspection-$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/water-intrusion-inspection",
+      "destination": "/moisture-inspection",
+      "statusCode": 301
+    },
+    {
+      "source": "/water-intrusion-inspection-(.*)",
+      "destination": "/moisture-inspection-$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/indoor-air-quality-inspection",
+      "destination": "/indoor-air-quality",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/mold-inspection-and-removal-(.*)",
+      "destination": "/$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/mold-inspection-and-removal-(.*)",
+      "destination": "/$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/(.*)",
+      "destination": "/$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/(.*)",
+      "destination": "/$1",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
@@ -6,4 +100,3 @@
     }
   ]
 }
-
