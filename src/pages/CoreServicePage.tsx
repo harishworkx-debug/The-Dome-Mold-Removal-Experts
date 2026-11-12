@@ -6,7 +6,7 @@ import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
 import { ServiceIcon } from '@/components/ServiceIcon';
 import { ServiceBodySections } from '@/components/ServiceBodySections';
-import { business, services, locations } from '@/data/business';
+import { business, services, locations, getLocationPath } from '@/data/business';
 import { guides } from '@/data/guides';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/structuredData';
 
@@ -36,7 +36,7 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
         jsonLd={[
           breadcrumbJsonLd(crumbs),
           faqJsonLd(service.faqs),
-          serviceJsonLd(service.name, `${business.primaryCity} & Miami Valley`, pagePath),
+          serviceJsonLd(service.name, service.comboLocationSlugs ? 'Dayton & Moraine' : business.primaryCity, pagePath),
         ]}
       />
       <Breadcrumbs items={crumbs} />
@@ -54,7 +54,7 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
             </div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-forest-800/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-teal-300 ring-1 ring-teal-500/30">
               <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-              Core Service · Oakwood &amp; Miami Valley
+              {service.comboLocationSlugs ? 'Commercial Service · Dayton & Moraine, OH' : 'Primary Service Area · Oakwood, OH'}
             </span>
           </div>
           <h1 className="mt-6 max-w-3xl font-display text-4xl font-extrabold text-white sm:text-5xl text-balance">
@@ -66,7 +66,7 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
               <Phone className="h-5 w-5" aria-hidden="true" />
               {service.ctaLabel}
             </a>
-            <Link to={`/${primaryHeroLocation.slug}`} className="btn-secondary !border-forest-600 !bg-transparent !text-white hover:!bg-forest-800/60">
+            <Link to={getLocationPath(primaryHeroLocation.slug)} className="btn-secondary !border-forest-600 !bg-transparent !text-white hover:!bg-forest-800/60">
               {primaryHeroLocation.name}, {primaryHeroLocation.stateAbbr} Location Page
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
@@ -80,9 +80,9 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
           <div className="lg:col-span-2 prose-mold">
             <ServiceBodySections
               service={service}
-              cityLabel={service.comboLocationSlugs ? 'Dayton and Moraine' : 'the Miami Valley'}
-              locShortLabel={service.comboLocationSlugs ? 'Dayton & Moraine, OH' : 'Oakwood & Dayton, OH'}
-              articleCityLabel={service.comboLocationSlugs ? 'a Dayton or Moraine' : 'a Miami Valley'}
+              cityLabel={service.comboLocationSlugs ? 'Dayton and Moraine' : 'Oakwood, OH'}
+              locShortLabel={service.comboLocationSlugs ? 'Dayton & Moraine, OH' : 'Oakwood, OH & Miami Valley'}
+              articleCityLabel={service.comboLocationSlugs ? 'a Dayton or Moraine' : 'an Oakwood, OH'}
               beforeFaq={
                 relatedGuides.length > 0 ? (
                   <Reveal delay={180}>
@@ -173,8 +173,8 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
                 <ul className="mt-4 space-y-2">
                   {locations.slice(0, 6).map((loc) => (
                     <li key={loc.slug}>
-                      <Link to={`/${loc.slug}`} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
-                        <span>Mold Services in {loc.name}, {loc.stateAbbr}</span>
+                      <Link to={getLocationPath(loc.slug)} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
+                        <span>Mold Removal in {loc.name}, {loc.stateAbbr}</span>
                         <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 text-forest-500" aria-hidden="true" />
                       </Link>
                     </li>

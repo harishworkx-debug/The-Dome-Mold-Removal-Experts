@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Clock, ChevronDown, Menu, X } from 'lucide-react';
-import { business, services, locations } from '@/data/business';
+import { business, services, locations, getLocationPath } from '@/data/business';
 
 type DropdownProps = {
   label: string;
@@ -126,7 +126,7 @@ function MobileMenu() {
                 <div className="ml-3 border-l border-charcoal-100 pl-3">
                   <Link to="/service-areas" onClick={() => setOpen(false)} className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-forest-700 hover:bg-forest-50">All Service Areas</Link>
                   {locations.map((l) => (
-                    <Link key={l.slug} to={`/${l.slug}`} onClick={() => setOpen(false)} className={subLinkClass}>Mold Services in {l.name}, {l.stateAbbr}</Link>
+                    <Link key={l.slug} to={getLocationPath(l.slug)} onClick={() => setOpen(false)} className={subLinkClass}>Mold Removal in {l.name}, {l.stateAbbr}</Link>
                   ))}
                 </div>
               )}
@@ -152,7 +152,7 @@ function MobileMenu() {
 
 export default function Header() {
   const serviceItems = services.map((s) => ({ slug: s.slug, name: s.name, path: s.corePath }));
-  const areaItems = locations.map((l) => ({ slug: l.slug, name: `Mold Services in ${l.name}, ${l.stateAbbr}`, path: `/${l.slug}` }));
+  const areaItems = locations.map((l) => ({ slug: l.slug, name: `Mold Removal in ${l.name}, ${l.stateAbbr}`, path: getLocationPath(l.slug) }));
 
   return (
     <>

@@ -4,7 +4,7 @@ import Seo from '@/components/Seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
-import { business, locations, services } from '@/data/business';
+import { business, locations, services, getLocationPath } from '@/data/business';
 import { combosForLocation } from '@/data/combos';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/structuredData';
 
@@ -35,12 +35,13 @@ export default function ServiceAreaDetail({ locationSlugOverride }: { locationSl
   const location = locations.find((l) => l.slug === cleanSlug);
   if (!location) return <Navigate to="/404" replace />;
 
-  const pagePath = `/${location.slug}`;
+  const pagePath = getLocationPath(location.slug);
 
-  // Redirect legacy /service-areas/* and /mold-inspection-and-removal-* URLs to clean /{city}-oh URL
+  // Redirect legacy /service-areas/*, /mold-inspection-and-removal-*, or bare /{city}-oh URLs to /mold-removal-{city}-oh
   if (
     locationHook.pathname.startsWith('/service-areas/') ||
-    locationHook.pathname.startsWith(`/${SERVICE_AREA_PREFIX}`)
+    locationHook.pathname.startsWith(`/${SERVICE_AREA_PREFIX}`) ||
+    locationHook.pathname === `/${location.slug}`
   ) {
     return <Navigate to={pagePath} replace />;
   }
@@ -49,12 +50,12 @@ export default function ServiceAreaDetail({ locationSlugOverride }: { locationSl
   const hasCommercial = combos.some((c) => c.serviceSlug === 'commercial-mold-inspection');
   const seoTitle =
     location.seoTitle ??
-    `Mold Inspection & Removal in ${location.name}, ${location.stateAbbr} | The Dome Mold Removal Experts`;
+    `Mold Removal in ${location.name}, ${location.stateAbbr} | Inspection & Remediation | The Dome`;
   const seoDescription =
     location.metaDescription ??
-    `Connect with independent mold inspection, testing, removal, and remediation professionals in ${location.name}, ${location.stateAbbr}. Call The Dome Mold Removal Experts at 937-967-3264.`;
+    `Connect with independent mold removal, inspection, testing, and remediation contractors in ${location.name}, ${location.stateAbbr}. Call The Dome at 937-967-3264.`;
   const pageHeading =
-    location.h1 ?? `Mold Inspection & Removal in ${location.name}, ${location.stateAbbr}`;
+    location.h1 ?? `Mold Removal & Inspection in ${location.name}, ${location.stateAbbr}`;
 
   const crumbs = [
     { name: 'Service Areas', path: '/service-areas' },
@@ -132,7 +133,7 @@ export default function ServiceAreaDetail({ locationSlugOverride }: { locationSl
                   {[
                     { label: `Mold Inspection in ${location.name}`, to: `/mold-inspection-${location.slug}` },
                     { label: `Mold Testing in ${location.name}`, to: `/mold-testing-${location.slug}` },
-                    { label: `Mold Removal in ${location.name}`, to: `/mold-removal-${location.slug}` },
+                    { label: 'Mold Removal Service Overview', to: '/mold-removal' },
                     { label: `Mold Remediation in ${location.name}`, to: `/mold-remediation-${location.slug}` },
                     { label: `Basement Mold Inspection in ${location.name}`, to: `/basement-mold-inspection-${location.slug}` },
                     ...(hasCommercial
@@ -326,8 +327,8 @@ export default function ServiceAreaDetail({ locationSlugOverride }: { locationSl
                 <ul className="mt-4 space-y-2">
                   {locations.filter((l) => l.slug !== location.slug).map((l) => (
                     <li key={l.slug}>
-                      <Link to={`/${l.slug}`} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
-                        <span>Mold Inspection &amp; Removal in {l.name}, {l.stateAbbr}</span>
+                      <Link to={getLocationPath(l.slug)} className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-charcoal-700 transition-colors hover:bg-forest-50 hover:text-forest-700">
+                        <span>Mold Removal in {l.name}, {l.stateAbbr}</span>
                         <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 text-forest-500" aria-hidden="true" />
                       </Link>
                     </li>

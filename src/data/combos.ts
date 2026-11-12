@@ -1,4 +1,4 @@
-import { services, locations, consolidatedServiceRedirects, formatServiceTemplate } from './business';
+import { services, locations, consolidatedServiceRedirects, formatServiceTemplate, getLocationPath } from './business';
 
 export type ComboPage = {
   path: string;
@@ -17,16 +17,11 @@ export type ComboPage = {
 const COMBO_SEO_OVERRIDES: Record<
   string,
   Partial<Pick<ComboPage, 'title' | 'metaDescription' | 'h1'>>
-> = {
-  '/mold-removal-dayton-oh': {
-    title: 'Mold Removal in Dayton, OH | Mold Remediation Assistance',
-    metaDescription:
-      'Need mold removal and remediation assistance in Dayton, OH? Connect with independent local contractors evaluating affected materials, containment scope, and moisture causes.',
-    h1: 'Mold Removal and Remediation Assistance in Dayton, Ohio',
-  },
-};
+> = {};
 
-export const comboPages: ComboPage[] = services.flatMap((service) =>
+export const comboPages: ComboPage[] = services
+  .filter((service) => service.slug !== 'mold-removal')
+  .flatMap((service) =>
   locations
     .filter((location) => !service.comboLocationSlugs || service.comboLocationSlugs.includes(location.slug))
     .map((location) => {
@@ -55,14 +50,34 @@ export function resolveLegacyRedirect(rawPath: string): string | undefined {
   if (!rawPath) return undefined;
   let path = rawPath.replace(/\/$/, '');
   if (!path.startsWith('/')) path = '/' + path;
+  const hadLegacyPrefix =
+    path.startsWith('/services/') || path.startsWith('/service-areas/');
   if (path.startsWith('/services/')) path = path.replace(/^\/services/, '');
   if (path.startsWith('/service-areas/')) path = path.replace(/^\/service-areas/, '');
 
-  // Legacy /mold-inspection-and-removal-{city}-oh -> /{city}-oh
+  // Legacy /mold-inspection-and-removal-{city}-oh -> /mold-removal-{city}-oh
   if (path.startsWith('/mold-inspection-and-removal-')) {
     const citySlug = path.slice('/mold-inspection-and-removal-'.length);
     const loc = locations.find((l) => l.slug === citySlug || `${l.slug}` === `${citySlug}-oh`);
-    if (loc) return `/${loc.slug}`;
+    if (loc) return getLocationPath(loc.slug);
+  }
+
+  // Legacy /services/mold-removal-{city}-oh or shortened /mold-removal-{city} -> /mold-removal-{city}-oh
+  if (path.startsWith('/mold-removal-')) {
+    const cityPart = path.slice('/mold-removal-'.length);
+    const shortMatch = locations.find((l) => l.slug === `${cityPart}-oh`);
+    if (shortMatch) return getLocationPath(shortMatch.slug);
+    if (hadLegacyPrefix) {
+      const exactMatch = locations.find((l) => l.slug === cityPart);
+      if (exactMatch) return getLocationPath(exactMatch.slug);
+    }
+  }
+
+  // Legacy /{city}-oh or /service-areas/{city}-oh -> /mold-removal-{city}-oh
+  const bareSlug = path.slice(1);
+  const bareLoc = locations.find((l) => l.slug === bareSlug || l.slug === `${bareSlug}-oh`);
+  if (bareLoc) {
+    return getLocationPath(bareLoc.slug);
   }
 
   // Legacy /indoor-air-quality-inspection base URL -> /indoor-air-quality

@@ -143,10 +143,10 @@ export default function GuidesOverview() {
               <Link to="/attic-mold-inspection" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
                 Attic Mold Inspection
               </Link>
-              <Link to="/oakwood-oh" className="rounded-lg bg-forest-800 px-3.5 py-2 font-semibold text-white hover:bg-forest-700">
+              <Link to="/mold-removal-oakwood-oh" className="rounded-lg bg-forest-800 px-3.5 py-2 font-semibold text-white hover:bg-forest-700">
                 Oakwood, OH Location Page
               </Link>
-              <Link to="/dayton-oh" className="rounded-lg bg-forest-800 px-3.5 py-2 font-semibold text-white hover:bg-forest-700">
+              <Link to="/mold-removal-dayton-oh" className="rounded-lg bg-forest-800 px-3.5 py-2 font-semibold text-white hover:bg-forest-700">
                 Dayton, OH Location Page
               </Link>
               <Link to="/contact" className="rounded-lg bg-teal-400 px-3.5 py-2 font-semibold text-forest-950 hover:bg-teal-300">

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Home from '@/pages/Home';
 import NotFound from '@/pages/NotFound';
-import { services, locations } from '@/data/business';
+import { services, locations, getLocationPath } from '@/data/business';
 import { guides } from '@/data/guides';
 
 const ServicesOverview = lazy(() => import('@/pages/ServicesOverview'));
@@ -46,8 +46,15 @@ export default function App() {
           {locations.map((loc) => (
             <Route
               key={loc.slug}
-              path={`/${loc.slug}`}
+              path={getLocationPath(loc.slug)}
               element={<ServiceAreaDetail locationSlugOverride={loc.slug} />}
+            />
+          ))}
+          {locations.map((loc) => (
+            <Route
+              key={`legacy-${loc.slug}`}
+              path={`/${loc.slug}`}
+              element={<Navigate to={getLocationPath(loc.slug)} replace />}
             />
           ))}
           {/* Consolidated overlapping service base paths -> core canonical services */}

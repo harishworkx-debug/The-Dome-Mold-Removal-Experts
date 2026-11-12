@@ -117,13 +117,13 @@ export default function Contact() {
                       Core Mold Testing Services
                     </Link>
                     <Link
-                      to="/oakwood-oh"
+                      to="/mold-removal-oakwood-oh"
                       className="rounded-lg bg-forest-50 px-3.5 py-2 text-xs font-semibold text-forest-700 hover:bg-forest-100"
                     >
                       Oakwood, OH Mold Services
                     </Link>
                     <Link
-                      to="/dayton-oh"
+                      to="/mold-removal-dayton-oh"
                       className="rounded-lg bg-forest-50 px-3.5 py-2 text-xs font-semibold text-forest-700 hover:bg-forest-100"
                     >
                       Dayton, OH Mold Services

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, ArrowRight, MapPin } from 'lucide-react';
-import { business, services } from '@/data/business';
+import { business, services, locations, getLocationPath } from '@/data/business';
 import { combosForService } from '@/data/combos';
 
 export default function PageCta({
@@ -36,7 +36,16 @@ export function ServiceLocationLinks({
 }) {
   const resolvedServiceName =
     serviceName ?? services.find((s) => s.slug === serviceSlug)?.shortName ?? 'Mold Service';
-  const others = combosForService(serviceSlug).filter((c) => c.locationSlug !== currentLocationSlug);
+  const others =
+    serviceSlug === 'mold-removal'
+      ? locations
+          .filter((l) => l.slug !== currentLocationSlug)
+          .map((l) => ({
+            path: getLocationPath(l.slug),
+            locationName: l.name,
+            locationState: l.stateAbbr,
+          }))
+      : combosForService(serviceSlug).filter((c) => c.locationSlug !== currentLocationSlug);
   if (others.length === 0) return null;
   return (
     <div className="rounded-2xl bg-forest-50 p-6 ring-1 ring-forest-100">

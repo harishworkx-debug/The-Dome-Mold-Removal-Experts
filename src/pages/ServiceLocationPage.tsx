@@ -6,7 +6,7 @@ import Reveal from '@/components/Reveal';
 import PageCta, { ServiceLocationLinks } from '@/components/PageCta';
 import { ServiceIcon } from '@/components/ServiceIcon';
 import { ServiceBodySections } from '@/components/ServiceBodySections';
-import { business, services, locations } from '@/data/business';
+import { business, services, locations, getLocationPath } from '@/data/business';
 import { guides } from '@/data/guides';
 import { ComboPage, getComboPage, combosForService, combosForLocation, resolveLegacyRedirect } from '@/data/combos';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/structuredData';
@@ -123,7 +123,7 @@ export default function ServiceLocationPage({ comboOverride }: { comboOverride?:
               <Phone className="h-5 w-5" aria-hidden="true" />
               {service.ctaLabel}
             </a>
-            <Link to={`/${location.slug}`} className="btn-secondary !border-forest-600 !bg-transparent !text-white hover:!bg-forest-800/60">
+            <Link to={getLocationPath(location.slug)} className="btn-secondary !border-forest-600 !bg-transparent !text-white hover:!bg-forest-800/60">
               All Mold Services in {locShort}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
@@ -200,14 +200,14 @@ export default function ServiceLocationPage({ comboOverride }: { comboOverride?:
                           <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                         </Link>
                         <Link
-                          to="/oakwood-oh"
+                          to="/mold-removal-oakwood-oh"
                           className="inline-flex items-center gap-1.5 rounded-lg bg-forest-800 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-forest-700"
                         >
                           Oakwood, OH Mold Services
                           <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                         </Link>
                         <Link
-                          to="/dayton-oh"
+                          to="/mold-removal-dayton-oh"
                           className="inline-flex items-center gap-1.5 rounded-lg bg-forest-800 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-forest-700"
                         >
                           Dayton, OH Mold Services
@@ -332,10 +332,10 @@ export default function ServiceLocationPage({ comboOverride }: { comboOverride?:
             ))}
           </div>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
-            <Link to="/oakwood-oh" className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600">
+            <Link to="/mold-removal-oakwood-oh" className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600">
               Oakwood, OH Location Page
             </Link>
-            <Link to="/dayton-oh" className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600">
+            <Link to="/mold-removal-dayton-oh" className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600">
               Dayton, OH Location Page
             </Link>
             <Link to="/contact" className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600">

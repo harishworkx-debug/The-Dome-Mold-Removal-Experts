@@ -20,7 +20,7 @@ import Seo from '@/components/Seo';
 import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
 import { ServiceIcon } from '@/components/ServiceIcon';
-import { business, services, locations, homeImages, reviewsData } from '@/data/business';
+import { business, services, locations, homeImages, reviewsData, getLocationPath } from '@/data/business';
 import { guides } from '@/data/guides';
 import { organizationJsonLd, websiteJsonLd, localBusinessJsonLd } from '@/lib/structuredData';
 
@@ -125,7 +125,7 @@ export default function Home() {
               Explore dedicated core pages for visual inspections, accredited lab testing, basement checks, or contractor
               remediation below. Serving neighboring cities? Visit{' '}
               <Link
-                to="/dayton-oh"
+                to="/mold-removal-dayton-oh"
                 className="font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600"
               >
                 Mold Removal &amp; Inspection in Dayton, OH
@@ -147,7 +147,7 @@ export default function Home() {
                 { label: 'Mold Remediation', to: '/mold-remediation' },
                 { label: 'Indoor Air Quality', to: '/indoor-air-quality' },
                 { label: 'Commercial Mold Inspection', to: '/commercial-mold-inspection' },
-                { label: 'Oakwood, OH', to: '/oakwood-oh' },
+                { label: 'Oakwood, OH', to: '/mold-removal-oakwood-oh' },
                 { label: 'Service Areas', to: '/service-areas' },
               ].map((link) => (
                 <Link
@@ -552,7 +552,7 @@ export default function Home() {
             {locations.map((loc, i) => (
               <Reveal key={loc.slug} delay={i * 40}>
                 <Link
-                  to={`/${loc.slug}`}
+                  to={getLocationPath(loc.slug)}
                   className="group flex flex-col items-center justify-center rounded-2xl bg-forest-50 p-6 text-center ring-1 ring-forest-100 transition-all hover:bg-forest-100 hover:ring-forest-300"
                 >
                   <MapPin className="h-7 w-7 text-forest-600 transition-transform group-hover:scale-110" aria-hidden="true" />

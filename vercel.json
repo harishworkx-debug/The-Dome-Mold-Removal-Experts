@@ -74,12 +74,112 @@
     },
     {
       "source": "/service-areas/mold-inspection-and-removal-(.*)",
-      "destination": "/$1",
+      "destination": "/mold-removal-$1",
       "statusCode": 301
     },
     {
       "source": "/mold-inspection-and-removal-(.*)",
-      "destination": "/$1",
+      "destination": "/mold-removal-$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/oakwood-oh",
+      "destination": "/mold-removal-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/dayton-oh",
+      "destination": "/mold-removal-dayton-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/kettering-oh",
+      "destination": "/mold-removal-kettering-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/centerville-oh",
+      "destination": "/mold-removal-centerville-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/beavercreek-oh",
+      "destination": "/mold-removal-beavercreek-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/miamisburg-oh",
+      "destination": "/mold-removal-miamisburg-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/washington-township-oh",
+      "destination": "/mold-removal-washington-township-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/moraine-oh",
+      "destination": "/mold-removal-moraine-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/riverside-oh",
+      "destination": "/mold-removal-riverside-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/fairborn-oh",
+      "destination": "/mold-removal-fairborn-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/oakwood-oh",
+      "destination": "/mold-removal-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/dayton-oh",
+      "destination": "/mold-removal-dayton-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/kettering-oh",
+      "destination": "/mold-removal-kettering-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/centerville-oh",
+      "destination": "/mold-removal-centerville-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/beavercreek-oh",
+      "destination": "/mold-removal-beavercreek-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/miamisburg-oh",
+      "destination": "/mold-removal-miamisburg-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/washington-township-oh",
+      "destination": "/mold-removal-washington-township-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/moraine-oh",
+      "destination": "/mold-removal-moraine-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/riverside-oh",
+      "destination": "/mold-removal-riverside-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/fairborn-oh",
+      "destination": "/mold-removal-fairborn-oh",
       "statusCode": 301
     },
     {

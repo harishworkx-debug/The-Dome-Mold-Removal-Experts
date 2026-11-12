@@ -88,16 +88,20 @@ export type ServiceLocation = {
   locationOverview: LocationOverview;
 };
 
+export function getLocationPath(slug: string): string {
+  return `/mold-removal-${slug}`;
+}
+
 export const locations: ServiceLocation[] = [
   {
     slug: 'oakwood-oh',
     name: 'Oakwood',
     stateAbbr: 'OH',
     county: 'Montgomery County',
-    seoTitle: 'Oakwood, OH Local Service Guide & Mold Resources | The Dome',
+    seoTitle: 'Oakwood, OH Mold Removal, Inspection & Moisture Guide | The Dome',
     metaDescription:
-      'Local guide for Oakwood, Ohio homeowners covering 1920s–1950s masonry, stone basements, addition crawlspaces, contractor questions, and independent mold referrals.',
-    h1: 'Oakwood, Ohio Home Mold & Moisture Resource Guide',
+      'Oakwood, OH mold removal & inspection guide: 1920s–1950s masonry, stone basements, crawlspaces, and independent contractor referrals. Call 937-967-3264.',
+    h1: 'Mold Removal and Inspection Assistance in Oakwood, Ohio',
     housingEra: '1920s–1950s brick, Tudor, and Colonial homes alongside updated residences along Far Hills Ave',
     soilAndDrainage: 'Mature tree canopy shade, leaf-prone gutters, and glacial clay soils that retain moisture along stone and block foundations',
     localFocusNote: 'Finished lower levels and older unvented crawlspaces under additions in Oakwood often trap summer humidity cleanly missed by surface cleaning.',
@@ -144,10 +148,10 @@ export const locations: ServiceLocation[] = [
     name: 'Dayton',
     stateAbbr: 'OH',
     county: 'Montgomery County',
-    seoTitle: 'Mold Removal Dayton OH | Inspection & Remediation | The Dome',
+    seoTitle: 'Mold Removal in Dayton, OH | Mold Remediation Assistance',
     metaDescription:
-      'Need mold removal Dayton OH, mold inspection, or commercial mold assessment? Connect directly with independent local Dayton contractors at 937-967-3264.',
-    h1: 'Mold Removal & Inspection in Dayton, OH',
+      'Need mold removal and remediation assistance in Dayton, OH? Connect with independent local contractors evaluating containment scope and moisture causes.',
+    h1: 'Mold Removal and Remediation Assistance in Dayton, Ohio',
     housingEra: 'Historic brick districts (Oakwood border, South Park, St. Anne’s Hill) to mid-century bungalows and multi-unit rentals',
     soilAndDrainage: 'River valley topography across the Great Miami and Mad rivers paired with older foundation drainage tiles',
     localFocusNote: 'Older Dayton masonry basements, flat roof commercial units, and tenant-occupied rentals often develop concealed moisture after storm cycles.',
@@ -632,10 +636,10 @@ export const services: MoldService[] = [
   {
     slug: 'mold-inspection',
     corePath: '/mold-inspection',
-    coreSeoTitle: 'Professional Mold Inspection & Home Assessment | Miami Valley | The Dome',
-    coreH1: 'Professional Mold Inspection & Home Assessment',
+    coreSeoTitle: 'Mold Inspection Oakwood OH & Nearby Areas | The Dome',
+    coreH1: 'Mold Inspection & Home Assessment in Oakwood, OH',
     coreMetaDescription:
-      'Searching for a mold assessment near me across Oakwood or Dayton? Connect with independent local professionals for a thorough home mold inspection at 937-967-3264.',
+      'Need a mold inspection in Oakwood, OH or nearby areas? Connect with independent local professionals for a thorough home mold assessment. Call 937-967-3264.',
     comboTitleTemplate: 'Mold Inspection in {locShort} | Local Mold Assessment',
     comboMetaTemplate:
       'Concerned about mold in your {city} home? Learn about mold inspections, moisture assessment and identifying potential problem areas. Connect with local professionals.',
@@ -723,8 +727,8 @@ export const services: MoldService[] = [
   {
     slug: 'mold-testing',
     corePath: '/mold-testing',
-    coreSeoTitle: 'Indoor Mold Testing, Air Quality Testing & Mold Sampling | Miami Valley',
-    coreH1: 'Indoor Mold Testing & Air Quality Mold Sampling',
+    coreSeoTitle: 'Mold Testing in Oakwood, OH & Air Sampling | The Dome',
+    coreH1: 'Indoor Mold Testing & Air Sampling in Oakwood, OH',
     coreMetaDescription:
       'Coordinate independent indoor mold testing, air quality mold testing, and surface mold sampling across Oakwood and Dayton, OH via accredited labs. Call 937-967-3264.',
     comboTitleTemplate: 'Mold Testing in {locShort} | Air & Surface Sampling',
@@ -807,10 +811,10 @@ export const services: MoldService[] = [
   {
     slug: 'mold-removal',
     corePath: '/mold-removal',
-    coreSeoTitle: 'Mold Removal Services & Local Contractor Referrals | Miami Valley',
-    coreH1: 'Physical Mold Removal by Independent Local Contractors',
+    coreSeoTitle: 'Mold Removal in Oakwood, OH & Surface Cleanup | The Dome',
+    coreH1: 'Mold Removal & Surface Cleanup in Oakwood, OH',
     coreMetaDescription:
-      'Connect with independent local contractors for targeted mold removal from affected drywall, framing, and lower-level materials across Dayton and the Miami Valley.',
+      'Connect with independent local contractors for targeted mold removal from affected drywall, framing, and lower-level materials in Oakwood, OH and nearby areas.',
     comboTitleTemplate: 'Mold Removal in {locShort} | Affected Material Cleanup',
     comboMetaTemplate:
       'Planning mold removal in {city}? Connect with independent contractors to assess damaged porous materials, removal scope, and moisture prevention steps.',
@@ -895,10 +899,10 @@ export const services: MoldService[] = [
   {
     slug: 'mold-remediation',
     corePath: '/mold-remediation',
-    coreSeoTitle: 'Mold Remediation & Containment Contractors | Dayton & Oakwood, OH',
-    coreH1: 'Full Mold Remediation & Containment Services',
+    coreSeoTitle: 'Mold Remediation Oakwood OH & Containment | The Dome',
+    coreH1: 'Full Mold Remediation & Containment in Oakwood, OH',
     coreMetaDescription:
-      'Connect with independent local mold remediation contractors for negative-air containment, HEPA air filtration, damaged material removal, and moisture resolution.',
+      'Connect with independent local mold remediation contractors in Oakwood, OH and the Miami Valley for negative-air containment, HEPA filtration, and moisture resolution.',
     comboTitleTemplate: 'Mold Remediation in {locShort} | Containment & Cleanup',
     comboMetaTemplate:
       'Need full mold remediation in {city}? Independent contractors manage containment barriers, HEPA filtration, damaged material removal, and moisture resolution.',
@@ -983,8 +987,8 @@ export const services: MoldService[] = [
   {
     slug: 'moisture-inspection',
     corePath: '/moisture-inspection',
-    coreSeoTitle: 'Moisture Detection & Water Intrusion Inspection | Dayton Area',
-    coreH1: 'Moisture Detection & Water Intrusion Inspection',
+    coreSeoTitle: 'Moisture & Leak Inspection in Oakwood, OH | The Dome',
+    coreH1: 'Moisture Detection & Water Intrusion in Oakwood, OH',
     coreMetaDescription:
       'Stop leaks and mold after water damage with independent moisture detection and water intrusion inspection services across Oakwood, Dayton, and the Miami Valley.',
     comboTitleTemplate: 'Moisture & Water Intrusion Inspection in {locShort} | Leak Tracing',
@@ -1068,8 +1072,8 @@ export const services: MoldService[] = [
   {
     slug: 'basement-mold-inspection',
     corePath: '/basement-mold-inspection',
-    coreSeoTitle: 'Basement Mold Inspection & Moisture Problems | Miami Valley',
-    coreH1: 'Basement Mold Inspection & Moisture Assessment',
+    coreSeoTitle: 'Basement Mold Inspection in Oakwood, OH | The Dome',
+    coreH1: 'Basement Mold & Moisture Assessment in Oakwood, OH',
     coreMetaDescription:
       'Resolve basement moisture problems with an independent basement mold inspection and basement mold assessment across Oakwood, Dayton, and nearby communities.',
     comboTitleTemplate: 'Basement Mold Inspection in {locShort} | Cellar & Crawlspace Checks',
@@ -1153,8 +1157,8 @@ export const services: MoldService[] = [
   {
     slug: 'attic-mold-inspection',
     corePath: '/attic-mold-inspection',
-    coreSeoTitle: 'Attic Mold & Attic Moisture Inspection | Roof Leak Mold Concerns',
-    coreH1: 'Attic Mold & Moisture Inspection',
+    coreSeoTitle: 'Attic Mold & Moisture Inspection in Oakwood, OH | The Dome',
+    coreH1: 'Attic Mold & Roof Moisture Inspection in Oakwood, OH',
     coreMetaDescription:
       'Investigate dark decking stains, attic moisture inspection issues, and roof leak mold concerns with independent inspectors in Oakwood and Dayton, OH.',
     comboTitleTemplate: 'Attic Mold Inspection in {locShort} | Roof Sheathing & Ventilation',
@@ -1238,8 +1242,8 @@ export const services: MoldService[] = [
   {
     slug: 'indoor-air-quality-inspection',
     corePath: '/indoor-air-quality',
-    coreSeoTitle: 'Indoor Air Quality Inspection & Musty Smell in House | Miami Valley',
-    coreH1: 'Indoor Air Quality Inspection & Musty Odor Evaluation',
+    coreSeoTitle: 'Indoor Air Quality Inspection in Oakwood, OH | The Dome',
+    coreH1: 'Indoor Air Quality & Musty Odor Evaluation in Oakwood, OH',
     coreMetaDescription:
       'Investigate a persistent musty smell in house and indoor mold concerns with an independent indoor air quality inspection in Oakwood and Dayton, OH.',
     comboTitleTemplate: 'Indoor Air Quality Inspection in {locShort} | Musty Odor & Airflow',
@@ -1323,8 +1327,8 @@ export const services: MoldService[] = [
   {
     slug: 'commercial-mold-inspection',
     corePath: '/commercial-mold-inspection',
-    coreSeoTitle: 'Commercial Mold Inspection & Office Mold Assessment | Dayton, OH',
-    coreH1: 'Commercial Mold Inspection & Office Mold Assessment',
+    coreSeoTitle: 'Commercial Mold Inspection & Office Assessment | Dayton, OH',
+    coreH1: 'Commercial Mold Inspection & Office Assessment in Dayton, OH',
     coreMetaDescription:
       'Connect facility managers and property owners with independent specialists for commercial mold inspection, office mold assessment, and commercial mold remediation scoping in Dayton and Moraine, OH.',
     comboTitleTemplate: 'Commercial Mold Inspection in {locShort} | Office & Facility Assessment',

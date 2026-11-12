@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, MapPin, ExternalLink, Home } from 'lucide-react';
 import { business } from '@/data/business';
-import { services, locations } from '@/data/business';
+import { services, locations, getLocationPath } from '@/data/business';
 
 export default function Footer() {
   return (
@@ -73,8 +73,8 @@ export default function Footer() {
             <li><Link to="/service-areas" className="text-forest-200 hover:text-white transition-colors">All Service Areas</Link></li>
             {locations.map((l) => (
               <li key={l.slug}>
-                <Link to={`/${l.slug}`} className="text-forest-200 hover:text-white transition-colors">
-                  Mold Services in {l.name}, {l.stateAbbr}
+                <Link to={getLocationPath(l.slug)} className="text-forest-200 hover:text-white transition-colors">
+                  Mold Removal in {l.name}, {l.stateAbbr}
                 </Link>
               </li>
             ))}

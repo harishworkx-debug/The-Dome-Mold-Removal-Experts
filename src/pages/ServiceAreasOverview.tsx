@@ -4,7 +4,7 @@ import Seo from '@/components/Seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Reveal from '@/components/Reveal';
 import PageCta from '@/components/PageCta';
-import { locations } from '@/data/business';
+import { locations, getLocationPath } from '@/data/business';
 import { breadcrumbJsonLd } from '@/lib/structuredData';
 
 export default function ServiceAreasOverview() {
@@ -40,7 +40,7 @@ export default function ServiceAreasOverview() {
           {locations.map((loc, i) => (
             <Reveal key={loc.slug} delay={i * 50}>
               <Link
-                to={`/${loc.slug}`}
+                to={getLocationPath(loc.slug)}
                 className="card-base group flex h-full flex-col p-6"
               >
                 <div className="flex items-start justify-between">

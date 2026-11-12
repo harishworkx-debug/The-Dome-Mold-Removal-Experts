@@ -16,7 +16,6 @@ const coreServices = [
 const comboServices = [
   'mold-inspection',
   'mold-testing',
-  'mold-removal',
   'mold-remediation',
   'moisture-inspection',
   'basement-mold-inspection',
@@ -89,15 +88,15 @@ coreServices.forEach((servicePath) => {
   });
 });
 
-// 4. Shortened Canonical Location Pages (/{city}-oh)
+// 4. Canonical Service Area Location Pages (/mold-removal-{city}-oh)
 locations.forEach((loc) => {
   urls.push({
-    loc: `${base}/${loc}`,
+    loc: `${base}/mold-removal-${loc}`,
     lastmod: CONTENT_UPDATED.locations,
   });
 });
 
-// 5. Active Service-Location Pages (8 residential x 10 locations + 2 targeted commercial locations = 82 pages)
+// 5. Active Service-Location Pages (7 residential x 10 locations + 2 targeted commercial locations = 72 pages)
 comboServices.forEach((service) => {
   locations.forEach((loc) => {
     urls.push({
