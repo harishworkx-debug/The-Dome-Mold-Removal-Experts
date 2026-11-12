@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/services/mold-assessment",
-      "destination": "/mold-inspection",
+      "destination": "/mold-inspection-oakwood-oh",
       "statusCode": 301
     },
     {
@@ -14,7 +14,7 @@
     },
     {
       "source": "/services/property-mold-inspection",
-      "destination": "/mold-inspection",
+      "destination": "/mold-inspection-oakwood-oh",
       "statusCode": 301
     },
     {
@@ -24,7 +24,7 @@
     },
     {
       "source": "/services/water-intrusion-inspection",
-      "destination": "/moisture-inspection",
+      "destination": "/moisture-inspection-oakwood-oh",
       "statusCode": 301
     },
     {
@@ -34,12 +34,57 @@
     },
     {
       "source": "/services/indoor-air-quality-inspection",
-      "destination": "/indoor-air-quality",
+      "destination": "/indoor-air-quality-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/indoor-air-quality",
+      "destination": "/indoor-air-quality-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/mold-inspection",
+      "destination": "/mold-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/mold-testing",
+      "destination": "/mold-testing-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/mold-removal",
+      "destination": "/mold-removal-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/mold-remediation",
+      "destination": "/mold-remediation-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/moisture-inspection",
+      "destination": "/moisture-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/basement-mold-inspection",
+      "destination": "/basement-mold-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/attic-mold-inspection",
+      "destination": "/attic-mold-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/commercial-mold-inspection",
+      "destination": "/commercial-mold-inspection-oakwood-oh",
       "statusCode": 301
     },
     {
       "source": "/mold-assessment",
-      "destination": "/mold-inspection",
+      "destination": "/mold-inspection-oakwood-oh",
       "statusCode": 301
     },
     {
@@ -49,7 +94,7 @@
     },
     {
       "source": "/property-mold-inspection",
-      "destination": "/mold-inspection",
+      "destination": "/mold-inspection-oakwood-oh",
       "statusCode": 301
     },
     {
@@ -59,7 +104,7 @@
     },
     {
       "source": "/water-intrusion-inspection",
-      "destination": "/moisture-inspection",
+      "destination": "/moisture-inspection-oakwood-oh",
       "statusCode": 301
     },
     {
@@ -69,7 +114,52 @@
     },
     {
       "source": "/indoor-air-quality-inspection",
-      "destination": "/indoor-air-quality",
+      "destination": "/indoor-air-quality-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/indoor-air-quality",
+      "destination": "/indoor-air-quality-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/mold-inspection",
+      "destination": "/mold-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/mold-testing",
+      "destination": "/mold-testing-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/mold-removal",
+      "destination": "/mold-removal-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/mold-remediation",
+      "destination": "/mold-remediation-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/moisture-inspection",
+      "destination": "/moisture-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/basement-mold-inspection",
+      "destination": "/basement-mold-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/attic-mold-inspection",
+      "destination": "/attic-mold-inspection-oakwood-oh",
+      "statusCode": 301
+    },
+    {
+      "source": "/commercial-mold-inspection",
+      "destination": "/commercial-mold-inspection-oakwood-oh",
       "statusCode": 301
     },
     {

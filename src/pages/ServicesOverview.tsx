@@ -40,7 +40,9 @@ export default function ServicesOverview() {
       <section className="pb-16 lg:pb-24">
         <div className="container-wide space-y-8">
           {services.map((service, i) => {
-            const combos = combosForService(service.slug).slice(0, 6);
+            const combos = combosForService(service.slug)
+              .filter((c) => c.path !== service.corePath)
+              .slice(0, 6);
             return (
               <Reveal key={service.slug} delay={i * 40}>
                 <article className="card-base grid grid-cols-1 overflow-hidden lg:grid-cols-3">

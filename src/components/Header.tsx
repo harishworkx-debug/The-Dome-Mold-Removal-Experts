@@ -114,9 +114,9 @@ function MobileMenu() {
                 </div>
               )}
 
-              <Link to="/mold-inspection" onClick={() => setOpen(false)} className={linkClass}>Mold Inspection</Link>
-              <Link to="/mold-testing" onClick={() => setOpen(false)} className={linkClass}>Mold Testing</Link>
-              <Link to="/mold-removal" onClick={() => setOpen(false)} className={linkClass}>Mold Removal</Link>
+              <Link to="/mold-inspection-oakwood-oh" onClick={() => setOpen(false)} className={linkClass}>Mold Inspection</Link>
+              <Link to="/mold-testing-oakwood-oh" onClick={() => setOpen(false)} className={linkClass}>Mold Testing</Link>
+              <Link to="/mold-removal-oakwood-oh" onClick={() => setOpen(false)} className={linkClass}>Mold Removal</Link>
 
               <button onClick={() => setSection(section === 'areas' ? null : 'areas')} className={btnClass}>
                 <span>Service Areas</span>

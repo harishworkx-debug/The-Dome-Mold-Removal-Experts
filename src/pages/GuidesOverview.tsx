@@ -131,16 +131,16 @@ export default function GuidesOverview() {
               Looking for Core Mold Services, Local Hubs or Phone Contact?
             </h2>
             <div className="mt-4 flex flex-wrap gap-2.5 text-sm">
-              <Link to="/mold-inspection" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
+              <Link to="/mold-inspection-oakwood-oh" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
                 Mold Inspection Services
               </Link>
-              <Link to="/mold-testing" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
+              <Link to="/mold-testing-oakwood-oh" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
                 Mold Testing Services
               </Link>
-              <Link to="/basement-mold-inspection" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
+              <Link to="/basement-mold-inspection-oakwood-oh" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
                 Basement Mold Inspection
               </Link>
-              <Link to="/attic-mold-inspection" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
+              <Link to="/attic-mold-inspection-oakwood-oh" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100">
                 Attic Mold Inspection
               </Link>
               <Link to="/mold-removal-oakwood-oh" className="rounded-lg bg-forest-800 px-3.5 py-2 font-semibold text-white hover:bg-forest-700">

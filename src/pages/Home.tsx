@@ -141,13 +141,13 @@ export default function Home() {
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm">
               {[
-                { label: 'Mold Inspection', to: '/mold-inspection' },
-                { label: 'Mold Testing', to: '/mold-testing' },
-                { label: 'Mold Removal', to: '/mold-removal' },
-                { label: 'Mold Remediation', to: '/mold-remediation' },
-                { label: 'Indoor Air Quality', to: '/indoor-air-quality' },
-                { label: 'Commercial Mold Inspection', to: '/commercial-mold-inspection' },
-                { label: 'Oakwood, OH', to: '/mold-removal-oakwood-oh' },
+                { label: 'Mold Inspection (Oakwood, OH)', to: '/mold-inspection-oakwood-oh' },
+                { label: 'Mold Testing (Oakwood, OH)', to: '/mold-testing-oakwood-oh' },
+                { label: 'Mold Removal (Oakwood, OH)', to: '/mold-removal-oakwood-oh' },
+                { label: 'Mold Remediation (Oakwood, OH)', to: '/mold-remediation-oakwood-oh' },
+                { label: 'Indoor Air Quality (Oakwood, OH)', to: '/indoor-air-quality-inspection-oakwood-oh' },
+                { label: 'Commercial Mold Inspection (Oakwood, OH)', to: '/commercial-mold-inspection-oakwood-oh' },
+                { label: 'Dayton, OH', to: '/mold-removal-dayton-oh' },
                 { label: 'Service Areas', to: '/service-areas' },
               ].map((link) => (
                 <Link
@@ -163,14 +163,10 @@ export default function Home() {
 
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => {
-              const hasOakwoodCombo =
-                !service.comboLocationSlugs || service.comboLocationSlugs.includes('oakwood-oh');
-              const localLinkTo = hasOakwoodCombo
-                ? `/${service.slug}-oakwood-oh`
-                : `/${service.slug}-${service.comboLocationSlugs?.[0] ?? 'dayton-oh'}`;
-              const localLinkLabel = hasOakwoodCombo
-                ? `${service.shortName} in Oakwood, OH`
-                : `${service.shortName} in Dayton, OH`;
+              const secondaryCitySlug =
+                service.comboLocationSlugs?.[0] ?? 'dayton-oh';
+              const secondaryLinkTo = `/${service.slug}-${secondaryCitySlug}`;
+              const secondaryLinkLabel = `${service.shortName} in Dayton, OH`;
               return (
                 <Reveal key={service.slug} delay={i * 60}>
                   <article className="card-base group flex h-full flex-col overflow-hidden">
@@ -197,14 +193,14 @@ export default function Home() {
                           to={service.corePath}
                           className="flex items-center justify-between rounded-lg bg-forest-50 px-4 py-3 text-sm font-semibold text-forest-700 transition-colors hover:bg-forest-100"
                         >
-                          Explore {service.name}
+                          {service.name} in Oakwood, OH
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                         </Link>
                         <Link
-                          to={localLinkTo}
+                          to={secondaryLinkTo}
                           className="text-center text-xs font-semibold text-forest-700 underline underline-offset-4 hover:text-forest-600"
                         >
-                          {localLinkLabel}
+                          {secondaryLinkLabel}
                         </Link>
                         <a href={business.phoneHref} className="flex items-center justify-center gap-2 rounded-lg border border-forest-200 px-4 py-3 text-sm font-semibold text-forest-700 transition-colors hover:bg-forest-50">
                           <Phone className="h-4 w-4" aria-hidden="true" />

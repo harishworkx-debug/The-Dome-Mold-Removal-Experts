@@ -133,7 +133,9 @@ export default function ServiceAreaDetail({ locationSlugOverride }: { locationSl
                   {[
                     { label: `Mold Inspection in ${location.name}`, to: `/mold-inspection-${location.slug}` },
                     { label: `Mold Testing in ${location.name}`, to: `/mold-testing-${location.slug}` },
-                    { label: 'Mold Removal Service Overview', to: '/mold-removal' },
+                    ...(location.slug !== 'oakwood-oh'
+                      ? [{ label: 'Oakwood, OH Mold Removal Hub', to: '/mold-removal-oakwood-oh' }]
+                      : [{ label: 'All Services Overview', to: '/services' }]),
                     { label: `Mold Remediation in ${location.name}`, to: `/mold-remediation-${location.slug}` },
                     { label: `Basement Mold Inspection in ${location.name}`, to: `/basement-mold-inspection-${location.slug}` },
                     ...(hasCommercial
@@ -156,15 +158,18 @@ export default function ServiceAreaDetail({ locationSlugOverride }: { locationSl
                     Core Service Overviews &amp; Moisture Guides
                   </p>
                   <div className="mt-2.5 flex flex-wrap gap-2">
-                    {services.slice(0, 6).map((s) => (
-                      <Link
-                        key={s.corePath}
-                        to={s.corePath}
-                        className="rounded-full bg-white px-3 py-1 text-xs font-medium text-charcoal-700 ring-1 ring-charcoal-200 transition-colors hover:bg-forest-100 hover:text-forest-800"
-                      >
-                        {s.name} Guide
-                      </Link>
-                    ))}
+                    {services
+                      .filter((s) => s.corePath !== pagePath)
+                      .slice(0, 6)
+                      .map((s) => (
+                        <Link
+                          key={s.corePath}
+                          to={s.corePath}
+                          className="rounded-full bg-white px-3 py-1 text-xs font-medium text-charcoal-700 ring-1 ring-charcoal-200 transition-colors hover:bg-forest-100 hover:text-forest-800"
+                        >
+                          {s.name} Guide
+                        </Link>
+                      ))}
                     <Link
                       to="/causes-of-mold-growth-ohio-basements"
                       className="inline-flex items-center gap-1 rounded-full bg-forest-800 px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-forest-700"

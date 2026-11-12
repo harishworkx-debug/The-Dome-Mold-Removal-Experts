@@ -105,13 +105,13 @@ export default function Contact() {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     <Link
-                      to="/mold-inspection"
+                      to="/mold-inspection-oakwood-oh"
                       className="rounded-lg bg-forest-50 px-3.5 py-2 text-xs font-semibold text-forest-700 hover:bg-forest-100"
                     >
                       Core Mold Inspection Services
                     </Link>
                     <Link
-                      to="/mold-testing"
+                      to="/mold-testing-oakwood-oh"
                       className="rounded-lg bg-forest-50 px-3.5 py-2 text-xs font-semibold text-forest-700 hover:bg-forest-100"
                     >
                       Core Mold Testing Services

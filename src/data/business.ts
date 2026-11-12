@@ -635,7 +635,7 @@ export const consolidatedServiceRedirects: Record<string, string> = {
 export const services: MoldService[] = [
   {
     slug: 'mold-inspection',
-    corePath: '/mold-inspection',
+    corePath: '/mold-inspection-oakwood-oh',
     coreSeoTitle: 'Mold Inspection Oakwood OH & Nearby Areas | The Dome',
     coreH1: 'Mold Inspection & Home Assessment in Oakwood, OH',
     coreMetaDescription:
@@ -726,7 +726,7 @@ export const services: MoldService[] = [
   },
   {
     slug: 'mold-testing',
-    corePath: '/mold-testing',
+    corePath: '/mold-testing-oakwood-oh',
     coreSeoTitle: 'Mold Testing in Oakwood, OH & Air Sampling | The Dome',
     coreH1: 'Indoor Mold Testing & Air Sampling in Oakwood, OH',
     coreMetaDescription:
@@ -810,7 +810,7 @@ export const services: MoldService[] = [
   },
   {
     slug: 'mold-removal',
-    corePath: '/mold-removal',
+    corePath: '/mold-removal-oakwood-oh',
     coreSeoTitle: 'Mold Removal in Oakwood, OH & Surface Cleanup | The Dome',
     coreH1: 'Mold Removal & Surface Cleanup in Oakwood, OH',
     coreMetaDescription:
@@ -898,7 +898,7 @@ export const services: MoldService[] = [
   },
   {
     slug: 'mold-remediation',
-    corePath: '/mold-remediation',
+    corePath: '/mold-remediation-oakwood-oh',
     coreSeoTitle: 'Mold Remediation Oakwood OH & Containment | The Dome',
     coreH1: 'Full Mold Remediation & Containment in Oakwood, OH',
     coreMetaDescription:
@@ -986,7 +986,7 @@ export const services: MoldService[] = [
   },
   {
     slug: 'moisture-inspection',
-    corePath: '/moisture-inspection',
+    corePath: '/moisture-inspection-oakwood-oh',
     coreSeoTitle: 'Moisture & Leak Inspection in Oakwood, OH | The Dome',
     coreH1: 'Moisture Detection & Water Intrusion in Oakwood, OH',
     coreMetaDescription:
@@ -1071,7 +1071,7 @@ export const services: MoldService[] = [
   },
   {
     slug: 'basement-mold-inspection',
-    corePath: '/basement-mold-inspection',
+    corePath: '/basement-mold-inspection-oakwood-oh',
     coreSeoTitle: 'Basement Mold Inspection in Oakwood, OH | The Dome',
     coreH1: 'Basement Mold & Moisture Assessment in Oakwood, OH',
     coreMetaDescription:
@@ -1156,7 +1156,7 @@ export const services: MoldService[] = [
   },
   {
     slug: 'attic-mold-inspection',
-    corePath: '/attic-mold-inspection',
+    corePath: '/attic-mold-inspection-oakwood-oh',
     coreSeoTitle: 'Attic Mold & Moisture Inspection in Oakwood, OH | The Dome',
     coreH1: 'Attic Mold & Roof Moisture Inspection in Oakwood, OH',
     coreMetaDescription:
@@ -1241,7 +1241,7 @@ export const services: MoldService[] = [
   },
   {
     slug: 'indoor-air-quality-inspection',
-    corePath: '/indoor-air-quality',
+    corePath: '/indoor-air-quality-inspection-oakwood-oh',
     coreSeoTitle: 'Indoor Air Quality Inspection in Oakwood, OH | The Dome',
     coreH1: 'Indoor Air Quality & Musty Odor Evaluation in Oakwood, OH',
     coreMetaDescription:
@@ -1326,11 +1326,11 @@ export const services: MoldService[] = [
   },
   {
     slug: 'commercial-mold-inspection',
-    corePath: '/commercial-mold-inspection',
-    coreSeoTitle: 'Commercial Mold Inspection & Office Assessment | Dayton, OH',
-    coreH1: 'Commercial Mold Inspection & Office Assessment in Dayton, OH',
+    corePath: '/commercial-mold-inspection-oakwood-oh',
+    coreSeoTitle: 'Commercial Mold Inspection & Office Assessment | Oakwood, OH',
+    coreH1: 'Commercial Mold Inspection & Office Assessment in Oakwood, OH',
     coreMetaDescription:
-      'Connect facility managers and property owners with independent specialists for commercial mold inspection, office mold assessment, and commercial mold remediation scoping in Dayton and Moraine, OH.',
+      'Connect Oakwood, Dayton, and Moraine facility managers and office owners with independent specialists for commercial mold inspection and remediation scoping at 937-967-3264.',
     comboTitleTemplate: 'Commercial Mold Inspection in {locShort} | Office & Facility Assessment',
     comboMetaTemplate:
       'Managing an office suite, retail unit, or warehouse in {city}? Connect with independent specialists for commercial mold assessment and remediation quotes at 937-967-3264.',

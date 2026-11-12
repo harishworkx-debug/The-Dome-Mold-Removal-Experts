@@ -22,10 +22,11 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
 
   const relatedCoreServices = services.filter((s) => s.slug !== service.slug);
   const relatedGuides = guides.filter((g) => service.relatedGuideSlugs.includes(g.slug));
-  const availableLocations = service.comboLocationSlugs
+  const availableLocations = (service.comboLocationSlugs
     ? locations.filter((l) => service.comboLocationSlugs!.includes(l.slug))
-    : locations;
-  const primaryHeroLocation = availableLocations[0] ?? locations[0];
+    : locations
+  ).filter((l) => l.slug !== 'oakwood-oh');
+  const primaryHeroLocation = locations[0];
 
   return (
     <>
@@ -36,7 +37,7 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
         jsonLd={[
           breadcrumbJsonLd(crumbs),
           faqJsonLd(service.faqs),
-          serviceJsonLd(service.name, service.comboLocationSlugs ? 'Dayton & Moraine' : business.primaryCity, pagePath),
+          serviceJsonLd(service.name, business.primaryCity, pagePath),
         ]}
       />
       <Breadcrumbs items={crumbs} />
@@ -54,7 +55,7 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
             </div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-forest-800/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-teal-300 ring-1 ring-teal-500/30">
               <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-              {service.comboLocationSlugs ? 'Commercial Service · Dayton & Moraine, OH' : 'Primary Service Area · Oakwood, OH'}
+              {service.comboLocationSlugs ? 'Commercial Service · Oakwood, Dayton & Moraine, OH' : 'Primary Service Area · Oakwood, OH'}
             </span>
           </div>
           <h1 className="mt-6 max-w-3xl font-display text-4xl font-extrabold text-white sm:text-5xl text-balance">
@@ -80,9 +81,9 @@ export default function CoreServicePage({ serviceSlug }: { serviceSlug: string }
           <div className="lg:col-span-2 prose-mold">
             <ServiceBodySections
               service={service}
-              cityLabel={service.comboLocationSlugs ? 'Dayton and Moraine' : 'Oakwood, OH'}
-              locShortLabel={service.comboLocationSlugs ? 'Dayton & Moraine, OH' : 'Oakwood, OH & Miami Valley'}
-              articleCityLabel={service.comboLocationSlugs ? 'a Dayton or Moraine' : 'an Oakwood, OH'}
+              cityLabel={service.comboLocationSlugs ? 'Oakwood, Dayton, and Moraine' : 'Oakwood, OH'}
+              locShortLabel={service.comboLocationSlugs ? 'Oakwood, Dayton & Moraine, OH' : 'Oakwood, OH & Miami Valley'}
+              articleCityLabel="an Oakwood, OH"
               beforeFaq={
                 relatedGuides.length > 0 ? (
                   <Reveal delay={180}>

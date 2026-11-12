@@ -1,16 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 
+// Core service pages anchored in main service area (Oakwood, OH).
+// Note: /mold-removal-oakwood-oh is emitted once in Section 4 (Service Area locations).
 const coreServices = [
-  '/mold-inspection',
-  '/mold-testing',
-  '/mold-removal',
-  '/mold-remediation',
-  '/moisture-inspection',
-  '/basement-mold-inspection',
-  '/attic-mold-inspection',
-  '/indoor-air-quality',
-  '/commercial-mold-inspection',
+  '/mold-inspection-oakwood-oh',
+  '/mold-testing-oakwood-oh',
+  '/mold-remediation-oakwood-oh',
+  '/moisture-inspection-oakwood-oh',
+  '/basement-mold-inspection-oakwood-oh',
+  '/attic-mold-inspection-oakwood-oh',
+  '/indoor-air-quality-inspection-oakwood-oh',
+  '/commercial-mold-inspection-oakwood-oh',
 ];
 
 const comboServices = [
@@ -96,14 +97,16 @@ locations.forEach((loc) => {
   });
 });
 
-// 5. Active Service-Location Pages (7 residential x 10 locations + 2 targeted commercial locations = 72 pages)
+// 5. Active Non-Oakwood Service-Location Pages (7 residential x 9 cities + 2 commercial = 65 pages)
 comboServices.forEach((service) => {
-  locations.forEach((loc) => {
-    urls.push({
-      loc: `${base}/${service}-${loc}`,
-      lastmod: CONTENT_UPDATED.combos,
+  locations
+    .filter((loc) => loc !== 'oakwood-oh')
+    .forEach((loc) => {
+      urls.push({
+        loc: `${base}/${service}-${loc}`,
+        lastmod: CONTENT_UPDATED.combos,
+      });
     });
-  });
 });
 
 commercialComboLocations.forEach((loc) => {

@@ -59,7 +59,7 @@ export const guides: MoldGuide[] = [
     readingTime: '6 min read',
     primaryService: {
       label: 'Basement Mold Inspection in the Miami Valley',
-      to: '/basement-mold-inspection',
+      to: '/basement-mold-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -107,8 +107,8 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Basement Mold Inspection Services', to: '/basement-mold-inspection' },
-      { label: 'Moisture Inspection Services', to: '/moisture-inspection' },
+      { label: 'Basement Mold Inspection Services', to: '/basement-mold-inspection-oakwood-oh' },
+      { label: 'Moisture Inspection Services', to: '/moisture-inspection-oakwood-oh' },
       { label: 'Oakwood, OH Mold Removal', to: '/mold-removal-oakwood-oh' },
       { label: 'Foundation Seepage & Efflorescence Guide', to: '/basement-moisture-guide' },
       { label: 'Contact & Referral Information', to: '/contact' },
@@ -145,7 +145,7 @@ export const guides: MoldGuide[] = [
     readingTime: '6 min read',
     primaryService: {
       label: 'Attic Mold Inspection in the Miami Valley',
-      to: '/attic-mold-inspection',
+      to: '/attic-mold-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -193,9 +193,9 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Attic Mold Inspection Services', to: '/attic-mold-inspection' },
-      { label: 'Moisture Inspection Services', to: '/moisture-inspection' },
-      { label: 'Mold Remediation Services', to: '/mold-remediation' },
+      { label: 'Attic Mold Inspection Services', to: '/attic-mold-inspection-oakwood-oh' },
+      { label: 'Moisture Inspection Services', to: '/moisture-inspection-oakwood-oh' },
+      { label: 'Mold Remediation Services', to: '/mold-remediation-oakwood-oh' },
       { label: 'Homeowner Mold Prevention Guide', to: '/mold-prevention-guide' },
       { label: 'Contact & Referral Information', to: '/contact' },
     ],
@@ -231,7 +231,7 @@ export const guides: MoldGuide[] = [
     readingTime: '6 min read',
     primaryService: {
       label: 'Core Mold Inspection Services',
-      to: '/mold-inspection',
+      to: '/mold-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -280,9 +280,9 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Core Mold Inspection Services', to: '/mold-inspection' },
-      { label: 'Core Moisture Inspection Services', to: '/moisture-inspection' },
-      { label: 'Mold Testing Services', to: '/mold-testing' },
+      { label: 'Core Mold Inspection Services', to: '/mold-inspection-oakwood-oh' },
+      { label: 'Core Moisture Inspection Services', to: '/moisture-inspection-oakwood-oh' },
+      { label: 'Mold Testing Services', to: '/mold-testing-oakwood-oh' },
       { label: 'Oakwood, OH Mold Removal', to: '/mold-removal-oakwood-oh' },
       { label: 'Contact & Phone Scheduling', to: '/contact' },
     ],
@@ -318,7 +318,7 @@ export const guides: MoldGuide[] = [
     readingTime: '5 min read',
     primaryService: {
       label: 'Moisture & Water Intrusion Inspection',
-      to: '/moisture-inspection',
+      to: '/moisture-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -357,9 +357,9 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Moisture Inspection Services', to: '/moisture-inspection' },
-      { label: 'Mold Remediation Services', to: '/mold-remediation' },
-      { label: 'Mold Removal Services', to: '/mold-removal' },
+      { label: 'Moisture Inspection Services', to: '/moisture-inspection-oakwood-oh' },
+      { label: 'Mold Remediation Services', to: '/mold-remediation-oakwood-oh' },
+      { label: 'Mold Removal Services', to: '/mold-removal-oakwood-oh' },
       { label: '24–48 Hour Water Damage Timeline Guide', to: '/water-damage-and-mold-guide' },
       { label: 'Contact & Referral Information', to: '/contact' },
     ],
@@ -395,7 +395,7 @@ export const guides: MoldGuide[] = [
     readingTime: '6 min read',
     primaryService: {
       label: 'Core Mold Testing & Inspection Options',
-      to: '/mold-testing',
+      to: '/mold-testing-oakwood-oh',
     },
     sections: [
       {
@@ -439,9 +439,9 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Mold Testing Services', to: '/mold-testing' },
-      { label: 'Mold Inspection Services', to: '/mold-inspection' },
-      { label: 'Indoor Air Quality Inspection', to: '/indoor-air-quality' },
+      { label: 'Mold Testing Services', to: '/mold-testing-oakwood-oh' },
+      { label: 'Mold Inspection Services', to: '/mold-inspection-oakwood-oh' },
+      { label: 'Indoor Air Quality Inspection', to: '/indoor-air-quality-inspection-oakwood-oh' },
       { label: 'Mold Inspection & Testing FAQs', to: '/mold-inspection-faqs' },
       { label: 'Contact & Referral Information', to: '/contact' },
     ],
@@ -477,7 +477,7 @@ export const guides: MoldGuide[] = [
     readingTime: '6 min read',
     primaryService: {
       label: 'Moisture & Crawl Space Inspection',
-      to: '/moisture-inspection',
+      to: '/moisture-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -521,9 +521,9 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Moisture Inspection Services', to: '/moisture-inspection' },
-      { label: 'Basement & Crawl Space Mold Inspection', to: '/basement-mold-inspection' },
-      { label: 'Mold Remediation Services', to: '/mold-remediation' },
+      { label: 'Moisture Inspection Services', to: '/moisture-inspection-oakwood-oh' },
+      { label: 'Basement & Crawl Space Mold Inspection', to: '/basement-mold-inspection-oakwood-oh' },
+      { label: 'Mold Remediation Services', to: '/mold-remediation-oakwood-oh' },
       { label: 'Foundation Seepage & Efflorescence Guide', to: '/basement-moisture-guide' },
       { label: 'Contact & Referral Information', to: '/contact' },
     ],
@@ -559,7 +559,7 @@ export const guides: MoldGuide[] = [
     readingTime: '5 min read',
     primaryService: {
       label: 'Core Mold Inspection Services',
-      to: '/mold-inspection',
+      to: '/mold-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -598,7 +598,7 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Core Mold Inspection Services', to: '/mold-inspection' },
+      { label: 'Core Mold Inspection Services', to: '/mold-inspection-oakwood-oh' },
       { label: 'Signs Your Attic May Have Mold or Moisture', to: '/signs-your-attic-has-mold-or-moisture-problem' },
       { label: 'What Causes Mold in Ohio Basements?', to: '/causes-of-mold-growth-ohio-basements' },
       { label: 'Oakwood, OH Mold Removal', to: '/mold-removal-oakwood-oh' },
@@ -632,7 +632,7 @@ export const guides: MoldGuide[] = [
     readingTime: '6 min read',
     primaryService: {
       label: 'Basement Mold & Moisture Inspection',
-      to: '/basement-mold-inspection',
+      to: '/basement-mold-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -666,7 +666,7 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Core Basement Mold Inspection Services', to: '/basement-mold-inspection' },
+      { label: 'Core Basement Mold Inspection Services', to: '/basement-mold-inspection-oakwood-oh' },
       { label: 'What Causes Mold in Ohio Basements?', to: '/causes-of-mold-growth-ohio-basements' },
       { label: 'Prevent Recurring Crawl Space Moisture', to: '/prevent-recurring-moisture-problems-crawl-spaces' },
       { label: 'Dayton, OH Mold Removal', to: '/mold-removal-dayton-oh' },
@@ -700,7 +700,7 @@ export const guides: MoldGuide[] = [
     readingTime: '5 min read',
     primaryService: {
       label: 'Core Mold Inspection Services',
-      to: '/mold-inspection',
+      to: '/mold-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -731,7 +731,7 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Core Mold Inspection Services', to: '/mold-inspection' },
+      { label: 'Core Mold Inspection Services', to: '/mold-inspection-oakwood-oh' },
       { label: 'What Happens During a Mold Inspection?', to: '/what-happens-during-professional-mold-inspection' },
       { label: 'Mold Testing vs. Mold Inspection', to: '/mold-testing-vs-mold-inspection-difference' },
       { label: 'Oakwood, OH Mold Removal', to: '/mold-removal-oakwood-oh' },
@@ -769,7 +769,7 @@ export const guides: MoldGuide[] = [
     readingTime: '5 min read',
     primaryService: {
       label: 'Moisture Inspection Services',
-      to: '/moisture-inspection',
+      to: '/moisture-inspection-oakwood-oh',
     },
     sections: [
       {
@@ -798,9 +798,9 @@ export const guides: MoldGuide[] = [
       },
     ],
     relatedLinks: [
-      { label: 'Core Moisture Inspection Services', to: '/moisture-inspection' },
+      { label: 'Core Moisture Inspection Services', to: '/moisture-inspection-oakwood-oh' },
       { label: 'How to Recognize Mold After Water Damage', to: '/recognize-mold-after-water-damage' },
-      { label: 'Core Mold Remediation Services', to: '/mold-remediation' },
+      { label: 'Core Mold Remediation Services', to: '/mold-remediation-oakwood-oh' },
       { label: 'Dayton, OH Mold Removal', to: '/mold-removal-dayton-oh' },
       { label: 'Contact & Phone Referral Info', to: '/contact' },
     ],

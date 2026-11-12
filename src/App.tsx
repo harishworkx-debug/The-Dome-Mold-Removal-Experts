@@ -36,13 +36,15 @@ export default function App() {
               element={<GuideDetail guideSlug={guide.slug} />}
             />
           ))}
-          {services.map((service) => (
-            <Route
-              key={service.corePath}
-              path={service.corePath}
-              element={<CoreServicePage serviceSlug={service.slug} />}
-            />
-          ))}
+          {services
+            .filter((service) => service.slug !== 'mold-removal')
+            .map((service) => (
+              <Route
+                key={service.corePath}
+                path={service.corePath}
+                element={<CoreServicePage serviceSlug={service.slug} />}
+              />
+            ))}
           {locations.map((loc) => (
             <Route
               key={loc.slug}
@@ -57,11 +59,19 @@ export default function App() {
               element={<Navigate to={getLocationPath(loc.slug)} replace />}
             />
           ))}
-          {/* Consolidated overlapping service base paths -> core canonical services */}
-          <Route path="/mold-assessment" element={<Navigate to="/mold-inspection" replace />} />
-          <Route path="/property-mold-inspection" element={<Navigate to="/mold-inspection" replace />} />
-          <Route path="/water-intrusion-inspection" element={<Navigate to="/moisture-inspection" replace />} />
-          <Route path="/indoor-air-quality-inspection" element={<Navigate to="/indoor-air-quality" replace />} />
+          {/* Legacy bare core service paths -> canonical Oakwood service URLs */}
+          {services.map((service) => (
+            <Route
+              key={`legacy-service-${service.slug}`}
+              path={`/${service.slug}`}
+              element={<Navigate to={service.corePath} replace />}
+            />
+          ))}
+          {/* Consolidated overlapping service base paths -> core canonical Oakwood services */}
+          <Route path="/mold-assessment" element={<Navigate to="/mold-inspection-oakwood-oh" replace />} />
+          <Route path="/property-mold-inspection" element={<Navigate to="/mold-inspection-oakwood-oh" replace />} />
+          <Route path="/water-intrusion-inspection" element={<Navigate to="/moisture-inspection-oakwood-oh" replace />} />
+          <Route path="/indoor-air-quality" element={<Navigate to="/indoor-air-quality-inspection-oakwood-oh" replace />} />
           <Route path="/about" element={<About />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
