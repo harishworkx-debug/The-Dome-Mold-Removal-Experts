@@ -1,11 +1,13 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Home from '@/pages/Home';
 import NotFound from '@/pages/NotFound';
 import { services, locations, getLocationPath } from '@/data/business';
 import { guides } from '@/data/guides';
+import { USE_LANDING_PAGE_AS_HOME } from '@/siteMode';
 
+const StandaloneLandingPage = lazy(() => import('@/standalone-landing/StandaloneLandingPage'));
 const ServicesOverview = lazy(() => import('@/pages/ServicesOverview'));
 const ServiceDetail = lazy(() => import('@/pages/ServiceDetail'));
 const CoreServicePage = lazy(() => import('@/pages/CoreServicePage'));
@@ -19,11 +21,35 @@ const Reviews = lazy(() => import('@/pages/Reviews'));
 const Contact = lazy(() => import('@/pages/Contact'));
 
 export default function App() {
+  const standaloneLandingElement = (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-white flex items-center justify-center">
+          <div className="w-8 h-8 border-3 border-teal-600 border-t-transparent rounded-full animate-spin" />
+        </div>
+      }
+    >
+      <StandaloneLandingPage />
+    </Suspense>
+  );
+
   return (
     <BrowserRouter>
       <Routes>
+        {/* Standalone Landing Page Standby / Preview Route (Always Accessible) */}
+        <Route path="/home-page" element={standaloneLandingElement} />
+
+        {/* When Switcher is TRUE: Serve Standalone Landing at Root and Primary Location URL */}
+        {USE_LANDING_PAGE_AS_HOME && (
+          <>
+            <Route path="/" element={standaloneLandingElement} />
+            <Route path="/mold-removal-oakwood-oh" element={standaloneLandingElement} />
+          </>
+        )}
+
+        {/* Main Website System (Preserved 100% Intact with Layout) */}
         <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
+          {!USE_LANDING_PAGE_AS_HOME && <Route path="/" element={<Home />} />}
           <Route path="/services" element={<ServicesOverview />} />
           <Route path="/services/:serviceSlug" element={<ServiceDetail />} />
           <Route path="/service-areas" element={<ServiceAreasOverview />} />
