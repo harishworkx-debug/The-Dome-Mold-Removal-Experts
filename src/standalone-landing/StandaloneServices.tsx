@@ -47,7 +47,7 @@ export default function StandaloneServices({ onSelectService }: StandaloneServic
             Comprehensive Mold Services in {LANDING_IDENTITY.location}
           </h2>
           <p className="text-base sm:text-lg text-charcoal-600 leading-relaxed">
-            From isolated surface contamination to complex historic basement seepage and whole-home air filtration, every protocol is engineered to eradicate mold and correct moisture triggers.
+            From isolated surface contamination to complex historic basement seepage and whole-home air filtration, every protocol is engineered to remove active mold colonies and address underlying moisture conditions.
           </p>
         </div>
 

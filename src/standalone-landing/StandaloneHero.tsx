@@ -97,7 +97,7 @@ export default function StandaloneHero() {
                   <ShieldCheck className="h-6 w-6 text-teal-300" />
                 </div>
                 <div>
-                  <h2 className="font-display text-lg font-bold text-white">Local Service Guarantee</h2>
+                  <h2 className="font-display text-lg font-bold text-white">Local Mold Removal Services</h2>
                   <p className="text-xs text-forest-300">Oakwood, OH &amp; Montgomery County</p>
                 </div>
               </div>

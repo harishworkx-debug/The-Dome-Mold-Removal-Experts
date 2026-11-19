@@ -726,7 +726,7 @@ export const guides: MoldGuide[] = [
         heading: 'Mold Removal vs. Mold Remediation Scope',
         paragraphs: [
           'Although homeowners often search both phrases interchangeably, contractors treat them slightly differently on job scopes. Mold removal refers specifically to physically clearing visible mold from affected materials and disposing of non-salvageable items.',
-          'Mold remediation encompasses broader containment practices: negative air scrubbing with HEPA filtration, isolating the work area, removing compromised drywall or trim, antimicrobial detailing, and coordinating moisture fixes so growth does not resume.',
+          'Mold remediation encompasses broader containment practices: negative air scrubbing with HEPA filtration, isolating the work area, removing compromised drywall or trim, antimicrobial detailing, and coordinating moisture fixes to help mitigate conditions that support fungal growth.',
         ],
       },
     ],

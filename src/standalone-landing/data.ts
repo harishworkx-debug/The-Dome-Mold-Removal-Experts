@@ -225,9 +225,9 @@ export const WHY_CHOOSE_US: PillarItem[] = [
   },
   {
     title: 'Root-Cause Moisture Diagnostics',
-    subtitle: 'Fixing the Source Forever',
+    subtitle: 'Identifying Water Sources',
     description:
-      'Surface cleaning without addressing water intrusion guarantees mold recurrence. Specialists inspect plumbing lines, roof flashing, and exterior foundation grading so mold never returns.',
+      'Surface cleaning without addressing water intrusion leaves underlying conditions unresolved. Specialists inspect plumbing lines, roof flashing, foundation perimeter grading, and crawl space humidity to identify and address the moisture sources supporting fungal growth.',
     icon: 'Droplets',
   },
 ];
@@ -241,7 +241,7 @@ export const LANDING_FAQS: FaqItem[] = [
   {
     question: 'What is the key difference between simple mold removal and full mold remediation?',
     answer:
-      'Mold removal refers to physically scrubbing or disposing of visibly contaminated materials. Full mold remediation is a comprehensive engineering standard (IICRC S520) that establishes negative-air containment barriers, HEPA air scrubbers to capture microscopic spores, antimicrobial surface treatment, and moisture-source identification so the problem does not spread or return.',
+      'Mold removal refers to physically scrubbing or disposing of visibly contaminated materials. Full mold remediation is a comprehensive engineering standard (IICRC S520) that establishes negative-air containment barriers, HEPA air scrubbers to capture microscopic spores, antimicrobial surface treatment, and moisture-source identification to help prevent cross-contamination and address the moisture conditions supporting mold.',
   },
   {
     question: 'Why do Oakwood homes and basements experience frequent moisture problems?',

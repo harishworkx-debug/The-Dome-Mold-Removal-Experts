@@ -64,7 +64,7 @@ export const StandaloneWhyUs: React.FC = () => {
             <div className="lg:col-span-2 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-400/20 text-amber-300 border border-amber-300/30 text-xs font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-amber-300" />
-                Guaranteed Written Scope Prior to Any Work
+                Detailed Written Scope Prior to Any Work
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
                 No Guesswork. No High-Pressure Tactics. Just Transparent Remediation.
