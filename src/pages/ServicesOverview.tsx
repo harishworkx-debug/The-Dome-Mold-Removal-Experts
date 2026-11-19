@@ -15,7 +15,7 @@ export default function ServicesOverview() {
     <>
       <Seo
         title="Mold Inspection, Testing & Removal Services in Oakwood, OH | The Dome"
-        description="Explore mold inspection, mold testing, mold removal, mold remediation, and moisture inspection referral services in Oakwood, OH and the Miami Valley. Call 937-967-3264."
+        description="Explore mold inspection, mold testing, mold removal, mold remediation, and moisture inspection referral services in Oakwood, OH and the Miami Valley. Call (937) 381-6995."
         path="/services"
         jsonLd={[breadcrumbJsonLd(crumbs)]}
       />

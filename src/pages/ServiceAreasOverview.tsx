@@ -13,7 +13,7 @@ export default function ServiceAreasOverview() {
     <>
       <Seo
         title="Mold Inspection & Removal Service Areas | The Dome Mold Removal Experts"
-        description="The Dome Mold Removal Experts serves Oakwood, Dayton, Kettering, Centerville, Beavercreek, Miamisburg, and the Miami Valley. Find your area and call 937-967-3264."
+        description="The Dome Mold Removal Experts serves Oakwood, Dayton, Kettering, Centerville, Beavercreek, Miamisburg, and the Miami Valley. Find your area and call (937) 381-6995."
         path="/service-areas"
         jsonLd={[breadcrumbJsonLd(crumbs)]}
       />

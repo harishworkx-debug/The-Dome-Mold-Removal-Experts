@@ -173,7 +173,7 @@ export function combosForService(serviceSlug: string): ComboPage[] {
       title: loc.seoTitle ?? `Mold Removal in ${loc.name}, ${loc.stateAbbr} | Inspection & Remediation | The Dome`,
       metaDescription:
         loc.metaDescription ??
-        `Connect with independent mold removal, inspection, testing, and remediation contractors in ${loc.name}, ${loc.stateAbbr}. Call The Dome at 937-967-3264.`,
+        `Connect with independent mold removal, inspection, testing, and remediation contractors in ${loc.name}, ${loc.stateAbbr}. Call The Dome at (937) 381-6995.`,
       h1: loc.h1 ?? `Mold Removal & Inspection in ${loc.name}, ${loc.stateAbbr}`,
     }));
   }

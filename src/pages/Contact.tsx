@@ -12,7 +12,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact The Dome Mold Removal Experts | Oakwood, Ohio Service Area"
-        description="Call The Dome Mold Removal Experts at 937-967-3264 to connect with independent mold inspection and remediation contractors in Oakwood, OH and the Miami Valley. Service-area business with no walk-in office."
+        description="Call The Dome Mold Removal Experts at (937) 381-6995 to connect with independent mold inspection and remediation contractors in Oakwood, OH and the Miami Valley. Service-area business with no walk-in office."
         path="/contact"
         jsonLd={[localBusinessJsonLd, breadcrumbJsonLd(crumbs)]}
       />

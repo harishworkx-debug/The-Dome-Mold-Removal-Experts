@@ -320,7 +320,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { num: '01', icon: Phone, title: 'Call Us', text: 'Call 937-967-3264 and tell us what you see in your Oakwood property and which areas are affected.' },
+              { num: '01', icon: Phone, title: 'Call Us', text: 'Call (937) 381-6995 and tell us what you see in your Oakwood property and which areas are affected.' },
               { num: '02', icon: Search, title: 'Local Connection', text: 'We match you with independent local specialists for mold inspection Oakwood OH, testing, or estimates.' },
               { num: '03', icon: ClipboardList, title: 'On-Site Review', text: 'An independent local inspector or contractor assesses moisture conditions and accessible mold growth.' },
               { num: '04', icon: ShieldCheck, title: 'Estimate & Next Steps', text: 'Review clear options directly with the contractor—whether targeted testing or mold removal Oakwood OH.' },
@@ -440,7 +440,7 @@ export default function Home() {
               { q: 'Does The Dome perform physical mold remediation directly?', a: 'No. The Dome Mold Removal Experts operates as a referral service connecting homeowners and property owners in Oakwood, OH and nearby areas with independent local mold inspectors, testing professionals, and remediation contractors.' },
               { q: 'Can you tell me what type of mold it is from a visual inspection?', a: 'No. A visual inspection alone cannot identify mold species or determine whether mold is toxigenic. Identifying specific species requires separate mold testing and laboratory analysis through an independent testing specialist.' },
               { q: 'What is the difference between mold removal and mold remediation?', a: 'Mold removal focuses on physically removing visible mold from affected surfaces. Mold remediation is a broader contractor process including containment, air filtration, material removal, cleaning, and correcting moisture sources.' },
-              { q: 'How do I schedule mold inspection or removal in Oakwood, OH?', a: 'Call 937-967-3264. We connect you directly by phone with independent local specialists—no automated booking queues or waiting on email forms.' },
+              { q: 'How do I schedule mold inspection or removal in Oakwood, OH?', a: 'Call (937) 381-6995. We connect you directly by phone with independent local specialists—no automated booking queues or waiting on email forms.' },
               { q: 'Do you serve Oakwood and Dayton as well as nearby cities?', a: 'Yes. Oakwood, OH is our primary focus on this homepage, and our referral network also covers Dayton, Kettering, Centerville, Beavercreek, Miamisburg, Washington Township, Moraine, Riverside, and Fairborn. Explore our dedicated Dayton location page or call to confirm coverage.' },
             ].map((faq, i) => (
               <Reveal key={faq.q} delay={i * 40}>

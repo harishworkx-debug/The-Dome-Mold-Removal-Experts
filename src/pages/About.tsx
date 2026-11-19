@@ -13,7 +13,7 @@ export default function About() {
     <>
       <Seo
         title="About The Dome Mold Removal Experts | Oakwood, OH Referral Network"
-        description="The Dome Mold Removal Experts is a service-area referral network based in Oakwood, Ohio connecting property owners with independent local mold inspection, testing, and remediation contractors. Call 937-967-3264."
+        description="The Dome Mold Removal Experts is a service-area referral network based in Oakwood, Ohio connecting property owners with independent local mold inspection, testing, and remediation contractors. Call (937) 381-6995."
         path="/about"
         jsonLd={[organizationJsonLd, breadcrumbJsonLd(crumbs)]}
       />

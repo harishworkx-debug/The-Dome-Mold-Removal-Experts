@@ -749,7 +749,7 @@ export const guides: MoldGuide[] = [
       },
       {
         q: 'How do I connect with a specialist by phone?',
-        a: 'Call 937-967-3264 directly. We keep communication simple with direct phone scheduling—no web forms or automated email delays.',
+        a: 'Call (937) 381-6995 directly. We keep communication simple with direct phone scheduling—no web forms or automated email delays.',
       },
     ],
   },

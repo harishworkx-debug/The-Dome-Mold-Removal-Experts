@@ -53,7 +53,7 @@ export default function ServiceAreaDetail({ locationSlugOverride }: { locationSl
     `Mold Removal in ${location.name}, ${location.stateAbbr} | Inspection & Remediation | The Dome`;
   const seoDescription =
     location.metaDescription ??
-    `Connect with independent mold removal, inspection, testing, and remediation contractors in ${location.name}, ${location.stateAbbr}. Call The Dome at 937-967-3264.`;
+    `Connect with independent mold removal, inspection, testing, and remediation contractors in ${location.name}, ${location.stateAbbr}. Call The Dome at (937) 381-6995.`;
   const pageHeading =
     location.h1 ?? `Mold Removal & Inspection in ${location.name}, ${location.stateAbbr}`;
 

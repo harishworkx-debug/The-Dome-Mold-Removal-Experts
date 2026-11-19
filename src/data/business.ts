@@ -4,8 +4,8 @@ export const business = {
   tagline: 'Connecting Oakwood, OH Homeowners With Local Mold Inspection & Removal Professionals',
   serviceAreaLabel: 'Oakwood, OH & Surrounding Miami Valley',
   isServiceAreaBusiness: true,
-  phoneDisplay: '937-967-3264',
-  phoneHref: 'tel:+19379673264',
+  phoneDisplay: '(937) 381-6995',
+  phoneHref: 'tel:+19373816995',
   website: 'https://www.moldremoval-oakwood.com',
   existingUrl: 'http://www.moldremoval-oakwood.com/',
   googleMapsListing: 'https://maps.app.goo.gl/73PAk7wk8AxiMjCFA',
@@ -100,7 +100,7 @@ export const locations: ServiceLocation[] = [
     county: 'Montgomery County',
     seoTitle: 'Oakwood, OH Mold Removal, Inspection & Moisture Guide | The Dome',
     metaDescription:
-      'Oakwood, OH mold removal & inspection guide: 1920s–1950s masonry, stone basements, crawlspaces, and independent contractor referrals. Call 937-967-3264.',
+      'Oakwood, OH mold removal & inspection guide: 1920s–1950s masonry, stone basements, crawlspaces, and independent contractor referrals. Call (937) 381-6995.',
     h1: 'Mold Removal and Inspection Assistance in Oakwood, Ohio',
     housingEra: '1920s–1950s brick, Tudor, and Colonial homes alongside updated residences along Far Hills Ave',
     soilAndDrainage: 'Mature tree canopy shade, leaf-prone gutters, and glacial clay soils that retain moisture along stone and block foundations',
@@ -138,7 +138,7 @@ export const locations: ServiceLocation[] = [
         },
         {
           q: 'Does The Dome maintain a storefront office in Oakwood for walk-in visits?',
-          a: 'No. We operate strictly as a service-area referral service serving Oakwood and surrounding Miami Valley homes by phone at 937-967-3264 so callers connect directly with independent local professionals.',
+          a: 'No. We operate strictly as a service-area referral service serving Oakwood and surrounding Miami Valley homes by phone at (937) 381-6995 so callers connect directly with independent local professionals.',
         },
       ],
     },
@@ -172,7 +172,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Our Dayton referral coverage supports both residential dwellings (single-family homes, duplexes, and rental portfolios) and commercial spaces including office suites, neighborhood retail storefronts, and light industrial units via dedicated Commercial Mold Inspection.',
       arrangeNote:
-        'Dayton homeowners, landlords, and commercial facility managers call 937-967-3264 directly to outline property size and whether residential remediation or commercial office scoping is required.',
+        'Dayton homeowners, landlords, and commercial facility managers call (937) 381-6995 directly to outline property size and whether residential remediation or commercial office scoping is required.',
       localContractorQuestions: [
         'For multi-unit Dayton properties or occupied suites, how will containment barriers protect shared hallways or adjacent units during cleanup?',
         'If foundation seepage or flat-roof ponding caused the mold growth, which moisture repairs must happen prior to remediation build-back?',
@@ -188,7 +188,7 @@ export const locations: ServiceLocation[] = [
         },
         {
           q: 'How are estimates scheduled for Dayton properties?',
-          a: 'Call 937-967-3264 directly. We keep intake phone-first so your Dayton neighborhood, access schedule, and property details reach independent local contractors quickly.',
+          a: 'Call (937) 381-6995 directly. We keep intake phone-first so your Dayton neighborhood, access schedule, and property details reach independent local contractors quickly.',
         },
       ],
     },
@@ -200,7 +200,7 @@ export const locations: ServiceLocation[] = [
     county: 'Montgomery County',
     seoTitle: 'Mold Removal Kettering OH | Basement & Home Help | The Dome',
     metaDescription:
-      'Connect with independent local contractors for mold removal Kettering OH, basement moisture checks, and remediation estimates. Call 937-967-3264.',
+      'Connect with independent local contractors for mold removal Kettering OH, basement moisture checks, and remediation estimates. Call (937) 381-6995.',
     h1: 'Mold Removal & Inspection in Kettering, OH',
     housingEra: '1950s–1970s post-war ranches, split-levels, and brick Cape Cods with lower-level rec rooms',
     soilAndDrainage: 'Clay-heavy suburban soil that slows perimeter runoff and presses moisture toward block basement walls',
@@ -222,7 +222,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Kettering calls center on residential single-family homeowners renovating older split-levels, families noticing lower rec-room odors, and neighborhood retail or small medical/dental office suites along Wilmington Pike and Far Hills.',
       arrangeNote:
-        'Kettering property owners describe whether the odor centers in a split-level crawlspace, finished rec room, or knee-wall attic when calling 937-967-3264.',
+        'Kettering property owners describe whether the odor centers in a split-level crawlspace, finished rec room, or knee-wall attic when calling (937) 381-6995.',
       localContractorQuestions: [
         'For finished wood paneling in a Kettering split-level basement, will sections need controlled removal so underlying block masonry can dry completely?',
         'Are exterior downspout extensions and crawlspace vapor barriers outside the contractor remediation estimate?',
@@ -250,7 +250,7 @@ export const locations: ServiceLocation[] = [
     county: 'Montgomery County',
     seoTitle: 'Mold Inspection Centerville OH | Attic & Home Checks | The Dome',
     metaDescription:
-      'Schedule an independent mold inspection Centerville OH homeowners rely on for attic condensation, finished basements, and leak checks. Call 937-967-3264.',
+      'Schedule an independent mold inspection Centerville OH homeowners rely on for attic condensation, finished basements, and leak checks. Call (937) 381-6995.',
     h1: 'Mold Inspection & Removal in Centerville, OH',
     housingEra: 'Historic limestone cores surrounded by late-1970s to 2000s two-story colonials and finished basements',
     soilAndDrainage: 'Limestone bedrock ledges and compacted subdivision grading along sloped lots',
@@ -288,7 +288,7 @@ export const locations: ServiceLocation[] = [
         },
         {
           q: 'Can I request independent mold testing for a Centerville home under contract?',
-          a: 'Yes. Call 937-967-3264 to request visual inspection and optional accredited laboratory air or swab sampling referrals during real-estate contingencies.',
+          a: 'Yes. Call (937) 381-6995 to request visual inspection and optional accredited laboratory air or swab sampling referrals during real-estate contingencies.',
         },
       ],
     },
@@ -300,7 +300,7 @@ export const locations: ServiceLocation[] = [
     county: 'Greene County',
     seoTitle: 'Mold Inspection Beavercreek OH | Roof & Home Checks | The Dome',
     metaDescription:
-      'Looking for mold inspection Beavercreek OH? Connect with independent local inspectors for roof valley leaks, attic checks, and moisture evaluations at 937-967-3264.',
+      'Looking for mold inspection Beavercreek OH? Connect with independent local inspectors for roof valley leaks, attic checks, and moisture evaluations at (937) 381-6995.',
     h1: 'Mold Inspection & Removal in Beavercreek, OH',
     housingEra: '1980s–modern suburban builds, tri-levels, and expansive custom homes with complex multi-gable roofs',
     soilAndDrainage: 'High Greene County seasonal water tables and tight building envelopes that hold indoor vapor',
@@ -322,7 +322,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Beavercreek referrals cover homeowners, military and contractor relocation buyers near the Greene County corridor, and low-rise office parks.',
       arrangeNote:
-        'Callers in Beavercreek can request focused roof-valley moisture tracing, whole-home relocation buyer inspections, or contractor remediation estimates directly at 937-967-3264.',
+        'Callers in Beavercreek can request focused roof-valley moisture tracing, whole-home relocation buyer inspections, or contractor remediation estimates directly at (937) 381-6995.',
       localContractorQuestions: [
         'For newer insulated Beavercreek framing envelopes, is indoor relative humidity or mechanical fresh-air balancing contributing alongside visible staining?',
         'If skylight or dormer flashing moisture is identified overhead, how should roofing repairs be sequenced before drywall cleanup?',
@@ -338,7 +338,7 @@ export const locations: ServiceLocation[] = [
         },
         {
           q: 'How fast can I speak with someone about a Beavercreek inspection before closing?',
-          a: 'Call 937-967-3264 directly by phone so we can match your Beavercreek address and contingency timeline with available independent local specialists.',
+          a: 'Call (937) 381-6995 directly by phone so we can match your Beavercreek address and contingency timeline with available independent local specialists.',
         },
       ],
     },
@@ -368,7 +368,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Miamisburg callers include owners of historic brick homes, hillside ranch families, and downtown commercial or Main Street mixed-use building stewards.',
       arrangeNote:
-        'Call 937-967-3264 directly and let us know whether your Miamisburg property has a stone cellar near the valley floor or hillside drainage entry.',
+        'Call (937) 381-6995 directly and let us know whether your Miamisburg property has a stone cellar near the valley floor or hillside drainage entry.',
       localContractorQuestions: [
         'For older Miamisburg stone or brick cellars, is breathable masonry drying or exterior footer drainage needed before finishing walls?',
         'Are window-well covers and hill-slope runoff paths evaluated separately from interior contractor cleanup?',
@@ -414,7 +414,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Referral requests in Washington Township serve custom single-family residences, condo/HOA properties, and low-rise office or medical complexes near township commercial corridors.',
       arrangeNote:
-        'Washington Township callers can reach 937-967-3264 directly by phone to describe walkout lower-level symptoms, utility room odors, or pre-sale inspection needs.',
+        'Washington Township callers can reach (937) 381-6995 directly by phone to describe walkout lower-level symptoms, utility room odors, or pre-sale inspection needs.',
       localContractorQuestions: [
         'For finished walkout basements with carpeted lower suites, how do independent specialists separate sill-plate rainwater leaks from HVAC condensate humidity?',
         'Can contractors evaluate raised exterior landscaping berms or blocked brick-weep holes alongside interior framing checks?',
@@ -430,7 +430,7 @@ export const locations: ServiceLocation[] = [
         },
         {
           q: 'How do estimates work for large custom homes in Washington Township?',
-          a: 'Call 937-967-3264 to connect with independent local inspectors or remediation contractors who review affected zones on-site and issue written project scopes.',
+          a: 'Call (937) 381-6995 to connect with independent local inspectors or remediation contractors who review affected zones on-site and issue written project scopes.',
         },
       ],
     },
@@ -460,7 +460,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Moraine receives dedicated support for both residential homeowners and facility contacts requiring Commercial Mold Inspection across offices, warehouses, and tenant suites.',
       arrangeNote:
-        'Call 937-967-3264 directly and specify whether your Moraine concern involves a residential slab home, utility basement, or commercial flat-roof building.',
+        'Call (937) 381-6995 directly and specify whether your Moraine concern involves a residential slab home, utility basement, or commercial flat-roof building.',
       localContractorQuestions: [
         'For Moraine commercial suites on concrete slabs, does the contractor review sub-floor vapor migration and drop-ceiling plenums separately?',
         'Can flat-roof seam ponding repairs be verified dry before replacing ceiling tiles or drywall?',
@@ -476,7 +476,7 @@ export const locations: ServiceLocation[] = [
         },
         {
           q: 'What does an inspection estimate process cost to initiate in Moraine?',
-          a: 'Calling 937-967-3264 connects you with independent local specialists at no upfront referral charge; independent inspectors and contractors set any on-site fees directly.',
+          a: 'Calling (937) 381-6995 connects you with independent local specialists at no upfront referral charge; independent inspectors and contractors set any on-site fees directly.',
         },
       ],
     },
@@ -506,7 +506,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Calls from Riverside involve owner-occupied ranches, base-adjacent military rental residences, and corridor small business buildings.',
       arrangeNote:
-        'Riverside callers can call 937-967-3264 by phone to discuss slab baseboard staining, ducted crawlspace humidity, or past storm drying concerns.',
+        'Riverside callers can call (937) 381-6995 by phone to discuss slab baseboard staining, ducted crawlspace humidity, or past storm drying concerns.',
       localContractorQuestions: [
         'If HVAC ducts run through a damp Riverside crawlspace, will contractors examine duct insulation sweating alongside floor joists?',
         'How is slab-edge drywall drying verified after minor water heater or storm intrusion events?',
@@ -552,7 +552,7 @@ export const locations: ServiceLocation[] = [
       propertyTypesBody:
         'Referrals in Fairborn support homeowners, off-base military families, university-area landlords, and property managers preparing units between leases.',
       arrangeNote:
-        'Property owners and managers in Fairborn can call 937-967-3264 directly to coordinate between-tenant inspections or residential removal quotes.',
+        'Property owners and managers in Fairborn can call (937) 381-6995 directly to coordinate between-tenant inspections or residential removal quotes.',
       localContractorQuestions: [
         'For vented Fairborn crawlspaces with hanging damp fiberglass insulation, should damaged batts be removed before structural drying and treatment?',
         'How will independent inspectors distinguish tenant shower-humidity mildew from hidden roof or plumbing leakage?',
@@ -564,7 +564,7 @@ export const locations: ServiceLocation[] = [
         },
         {
           q: 'Can Fairborn landlords arrange independent documentation between tenants?',
-          a: 'Yes. Landlords and property managers call 937-967-3264 to connect with local inspectors for objective visual evaluations and optional accredited lab sampling.',
+          a: 'Yes. Landlords and property managers call (937) 381-6995 to connect with local inspectors for objective visual evaluations and optional accredited lab sampling.',
         },
         {
           q: 'Does Fairborn fall inside your Greene County referral zone?',
@@ -639,7 +639,7 @@ export const services: MoldService[] = [
     coreSeoTitle: 'Mold Inspection Oakwood OH & Nearby Areas | The Dome',
     coreH1: 'Mold Inspection & Home Assessment in Oakwood, OH',
     coreMetaDescription:
-      'Need a mold inspection in Oakwood, OH or nearby areas? Connect with independent local professionals for a thorough home mold assessment. Call 937-967-3264.',
+      'Need a mold inspection in Oakwood, OH or nearby areas? Connect with independent local professionals for a thorough home mold assessment. Call (937) 381-6995.',
     comboTitleTemplate: 'Mold Inspection in {locShort} | Local Mold Assessment',
     comboMetaTemplate:
       'Concerned about mold in your {city} home? Learn about mold inspections, moisture assessment and identifying potential problem areas. Connect with local professionals.',
@@ -730,7 +730,7 @@ export const services: MoldService[] = [
     coreSeoTitle: 'Mold Testing in Oakwood, OH & Air Sampling | The Dome',
     coreH1: 'Indoor Mold Testing & Air Sampling in Oakwood, OH',
     coreMetaDescription:
-      'Coordinate independent indoor mold testing, air quality mold testing, and surface mold sampling across Oakwood and Dayton, OH via accredited labs. Call 937-967-3264.',
+      'Coordinate independent indoor mold testing, air quality mold testing, and surface mold sampling across Oakwood and Dayton, OH via accredited labs. Call (937) 381-6995.',
     comboTitleTemplate: 'Mold Testing in {locShort} | Air & Surface Sampling',
     comboMetaTemplate:
       'Considering mold testing in {city}? Understand when air or surface sampling helps, sampling options, lab limitations, and local referral options.',
@@ -1078,7 +1078,7 @@ export const services: MoldService[] = [
       'Resolve basement moisture problems with an independent basement mold inspection and basement mold assessment across Oakwood, Dayton, and nearby communities.',
     comboTitleTemplate: 'Basement Mold Inspection in {locShort} | Cellar & Crawlspace Checks',
     comboMetaTemplate:
-      'Dealing with damp basement walls, musty odors, or seepage in {city}? Schedule an independent basement mold inspection through The Dome at 937-967-3264.',
+      'Dealing with damp basement walls, musty odors, or seepage in {city}? Schedule an independent basement mold inspection through The Dome at (937) 381-6995.',
     comboH1Template: 'Basement Mold Inspection in {locShort}',
     name: 'Basement Mold Inspection',
     shortName: 'Basement Mold Inspection',
@@ -1163,7 +1163,7 @@ export const services: MoldService[] = [
       'Investigate dark decking stains, attic moisture inspection issues, and roof leak mold concerns with independent inspectors in Oakwood and Dayton, OH.',
     comboTitleTemplate: 'Attic Mold Inspection in {locShort} | Roof Sheathing & Ventilation',
     comboMetaTemplate:
-      'Seeing darkened roof decking or attic condensation in {city}? Connect with local inspectors evaluating roof leaks, bath-fan venting, and airflow at 937-967-3264.',
+      'Seeing darkened roof decking or attic condensation in {city}? Connect with local inspectors evaluating roof leaks, bath-fan venting, and airflow at (937) 381-6995.',
     comboH1Template: 'Attic Mold Inspection in {locShort}',
     name: 'Attic Mold Inspection',
     shortName: 'Attic Mold Inspection',
@@ -1330,10 +1330,10 @@ export const services: MoldService[] = [
     coreSeoTitle: 'Commercial Mold Inspection & Office Assessment | Oakwood, OH',
     coreH1: 'Commercial Mold Inspection & Office Assessment in Oakwood, OH',
     coreMetaDescription:
-      'Connect Oakwood, Dayton, and Moraine facility managers and office owners with independent specialists for commercial mold inspection and remediation scoping at 937-967-3264.',
+      'Connect Oakwood, Dayton, and Moraine facility managers and office owners with independent specialists for commercial mold inspection and remediation scoping at (937) 381-6995.',
     comboTitleTemplate: 'Commercial Mold Inspection in {locShort} | Office & Facility Assessment',
     comboMetaTemplate:
-      'Managing an office suite, retail unit, or warehouse in {city}? Connect with independent specialists for commercial mold assessment and remediation quotes at 937-967-3264.',
+      'Managing an office suite, retail unit, or warehouse in {city}? Connect with independent specialists for commercial mold assessment and remediation quotes at (937) 381-6995.',
     comboH1Template: 'Commercial Mold Inspection in {locShort}',
     comboLocationSlugs: ['dayton-oh', 'moraine-oh'],
     name: 'Commercial Mold Inspection',
@@ -1400,7 +1400,7 @@ export const services: MoldService[] = [
       },
       {
         q: 'Can commercial mold inspections be scheduled outside peak business hours?',
-        a: 'Call 937-967-3264 directly to discuss timing with independent local specialists; after-hours walkthrough availability depends on contractor schedules.',
+        a: 'Call (937) 381-6995 directly to discuss timing with independent local specialists; after-hours walkthrough availability depends on contractor schedules.',
       },
     ],
     relatedGuideSlugs: [
