@@ -81,3 +81,17 @@
     transition: none;
   }
 }
+
+/* Hide Netlify Drawer / Feedback Badge injected by Netlify */
+[data-netlify-drawer],
+#netlify-badge,
+.netlify-badge,
+iframe#netlify-identity-widget,
+[class*="netlify-drawer"],
+[id*="netlify-drawer"],
+div[data-testid="feedback-trigger"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
