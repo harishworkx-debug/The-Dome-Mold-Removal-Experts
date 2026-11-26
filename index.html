@@ -27,6 +27,62 @@
     <meta name="twitter:description" content="Connect with local mold inspection and remediation professionals in Oakwood, OH. Get help assessing mold concerns, moisture problems and property damage. Request an estimate today." />
     <meta name="twitter:image" content="https://images.pexels.com/photos/8293678/pexels-photo-8293678.jpeg?auto=compress&cs=tinysrgb&h=630&w=1200" />
     <title>Mold Inspection & Removal in Oakwood, OH | The Dome Mold Removal Experts</title>
+    <!-- Aggressive block for Netlify injected drawer badge -->
+    <style>
+      iframe[src*="netlify"],
+      iframe[title*="netlify" i],
+      netlify-drawer,
+      #netlify-badge,
+      .netlify-badge,
+      [class*="netlify-drawer"],
+      [id*="netlify-drawer"],
+      div[data-testid="feedback-trigger"] {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        opacity: 0 !important;
+        z-index: -999999 !important;
+        position: fixed !important;
+        left: -99999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+    </style>
+    <script>
+      (function () {
+        function killNetlifyBadge() {
+          var selectors = [
+            'iframe[src*="netlify"]',
+            'iframe[title*="netlify" i]',
+            'netlify-drawer',
+            '#netlify-badge',
+            '.netlify-badge',
+            '[class*="netlify-drawer"]',
+            '[id*="netlify-drawer"]',
+            'div[data-testid="feedback-trigger"]'
+          ];
+          for (var i = 0; i < selectors.length; i++) {
+            var els = document.querySelectorAll(selectors[i]);
+            for (var j = 0; j < els.length; j++) {
+              try {
+                els[j].remove();
+              } catch (e) {
+                els[j].style.setProperty('display', 'none', 'important');
+                els[j].style.setProperty('visibility', 'hidden', 'important');
+                els[j].style.setProperty('pointer-events', 'none', 'important');
+              }
+            }
+          }
+        }
+        if (typeof window !== 'undefined') {
+          var observer = new MutationObserver(killNetlifyBadge);
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+          window.addEventListener('DOMContentLoaded', killNetlifyBadge);
+          window.addEventListener('load', killNetlifyBadge);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
